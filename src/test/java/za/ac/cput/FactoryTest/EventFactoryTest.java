@@ -1,5 +1,9 @@
 package za.ac.cput.FactoryTest;
-
+/* EventFactoryTest.Java
+ *  Entity for EventFactory
+ *  Author: Yasmeen Nel (219250553)
+ *  Date: 29 March 2022
+ * */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Event;
 import za.ac.cput.Factory.EventFactory;
