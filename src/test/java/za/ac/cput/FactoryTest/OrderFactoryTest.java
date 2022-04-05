@@ -1,3 +1,9 @@
+/* OrderFactoryTest.java
+   Entity for order
+   Author: Damone Hartnick
+   Student Number : 219093717
+   Date: April 2022
+*/
 package za.ac.cput.FactoryTest;
 
 import org.junit.jupiter.api.Test;
@@ -11,10 +17,10 @@ public class OrderFactoryTest {
      @Test
     public void test (){
          Order order = OrderFactory.createOrder(
-                 "DH245",
-                 "Gift",
-                 "Online",
-                 25);
+                 "67GD",
+                 "Seafood Platter",
+                 "Delivery",
+                 2);
          System.out.println(order.toString());
          assertNotNull(order);
 
