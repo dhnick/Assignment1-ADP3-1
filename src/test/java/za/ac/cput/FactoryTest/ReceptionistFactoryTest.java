@@ -1,5 +1,10 @@
 package za.ac.cput.FactoryTest;
-
+/*
+    ReceptionistFactoryTest.java
+    Test for ReceptionistFactory class
+    Author: Jody Heideman (219307725)
+    Date: 27/03/2022
+ */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Delivery;
 import za.ac.cput.Domain.Receptionist;

@@ -1,5 +1,10 @@
 package za.ac.cput.Factory;
-
+/*
+    ReceptionistFactory.java
+    Entity for ReceptionistFactory
+    Author: Jody Heideman (219307725)
+    Date: 27/03/2022
+ */
 import za.ac.cput.Domain.Delivery;
 import za.ac.cput.Domain.Receptionist;
 
