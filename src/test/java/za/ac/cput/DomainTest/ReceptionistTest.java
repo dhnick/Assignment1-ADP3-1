@@ -16,14 +16,14 @@ class ReceptionistTest {
     public void Test(){
 
         Receptionist receptionist = new Receptionist.Builder()
-                .setReceptionistID(500)
+                .setReceptionistID("481592637")
                 .setReceptionistTime(1900)
                 .setNumberOfPeople(5)
                 .setCreateReservation("Table 5 booked for family of 5 at 19:00")
                 .build();
 
         Receptionist receptionist1 = new Receptionist.Builder()
-                .setReceptionistID(204)
+                .setReceptionistID("748159263")
 
                 .build();
 

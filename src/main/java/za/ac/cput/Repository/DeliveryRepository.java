@@ -55,13 +55,15 @@ public class DeliveryRepository implements IDeliveryRepository{
     }
 
     @Override
-    public boolean delete(String deliveryID) {
+    public void delete(String deliveryID) {
         Delivery deliveryToDelete = read(deliveryID);
-        if(deliveryToDelete == null)
-            return false;
-        deliveryDB.remove(deliveryToDelete);
+        if(deliveryToDelete == null){
+            System.out.println("Delivery is null ");
+        }else{
+            deliveryDB.remove(deliveryToDelete);
+            System.out.println("Delivery deleted ");
+        }
 
-        return true;
     }
 
     @Override

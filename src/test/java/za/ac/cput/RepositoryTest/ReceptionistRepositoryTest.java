@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReceptionistRepositoryTest {
 
     private static ReceptionistRepository repository = ReceptionistRepository.getRepository();
-    private static Receptionist receptionist = ReceptionistFactory.createReceptionist(1500 ,1600,5,"Table for 5 at 16:00");
+    private static Receptionist receptionist = ReceptionistFactory.createReceptionist("481592637" ,1600,5,"Table for 5 at 16:00");
     @Test
     void a_create() {
         Receptionist created = repository.create(receptionist);
@@ -37,7 +37,7 @@ class ReceptionistRepositoryTest {
     @Test
     void c_update() {
         Receptionist updated = new Receptionist.Builder().copy(receptionist)
-                .setReceptionistID(1500)
+                .setReceptionistID("481592637")
                 .setNumberOfPeople(7)
                 .setReceptionistTime(1900)
                 .setCreateReservation("Table for 7 at 19:00")
@@ -48,10 +48,8 @@ class ReceptionistRepositoryTest {
 
     @Test
     void e_delete() {
-        boolean success = repository.delete(receptionist.getReceptionistID());
-        assertTrue(success);
-
-        System.out.println("Delete status, " + success);
+     repository.delete(receptionist.getReceptionistID());
+    assertNotNull(receptionist);
     }
 
     @Test

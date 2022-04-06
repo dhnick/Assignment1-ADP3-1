@@ -31,7 +31,7 @@ public class ReceptionistRepository implements IReceptionistRepository {
     }
 
     @Override
-    public Receptionist read(Integer receptionistID) {
+    public Receptionist read(String receptionistID) {
 
         for (Receptionist r : receptionistDB) {
             if (r.getReceptionistID() == receptionistID) {
@@ -42,13 +42,7 @@ public class ReceptionistRepository implements IReceptionistRepository {
 
         return null;
 
-     /*   //lamda expression
-        Receptionist receptionist = receptionistDB.stream()
-                .filter(r -> r.getReceptionistID() == receptionistID)
-                .findAny()
-                .orElse(null);
-        return receptionist;
-        */
+
     }
 
     @Override
@@ -65,13 +59,18 @@ public class ReceptionistRepository implements IReceptionistRepository {
     }
 
     @Override
-    public boolean delete(Integer receptionistID) {
+    public void delete(String receptionistID) {
         Receptionist receptionistToDelete = read(receptionistID);
-        if(receptionistToDelete == null)
-            return false;
+        if(receptionistToDelete == null){
+            System.out.println("Receptionist is null");
+        }else {
             receptionistDB.remove(receptionistToDelete);
+            System.out.println("Receptionist deleted ");
+        }
 
-        return true;
+
+
+
     }
 
     @Override

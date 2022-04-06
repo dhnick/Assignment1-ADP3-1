@@ -19,7 +19,7 @@ class DeliveryRepositoryTest {
 
     private static DeliveryRepository repository = DeliveryRepository.getRepository();
     private static Delivery delivery = DeliveryFactory.createDelivery
-            ("1900" , "Uber eats","2 Johnson road","15:00");
+            ("15926348" , "Uber eats","2 Johnson road","15:00");
     @Test
     void a_create() {
         Delivery created = repository.create(delivery);
@@ -39,7 +39,7 @@ class DeliveryRepositoryTest {
     @Test
     void c_update() {
         Delivery updated = new Delivery.Builder().copy(delivery)
-                .setDeliveryID("1900")
+                .setDeliveryID("15926348")
                 .setDeliveryMethod("Uber Eats")
                 .setDeliveryAddress("20 Cliffoney street")
                 .setDeliveryTime("13:00")
@@ -50,10 +50,9 @@ class DeliveryRepositoryTest {
 
     @Test
     void e_delete() {
-        boolean success = repository.delete(delivery.getDeliveryID());
-        assertTrue(success);
+        repository.delete(delivery.getDeliveryID());
+        assertNotNull(delivery);
 
-        System.out.println("Delete status, " + success);
     }
 
     @Test
