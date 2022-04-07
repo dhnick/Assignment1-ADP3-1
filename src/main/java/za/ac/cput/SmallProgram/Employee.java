@@ -1,5 +1,4 @@
-/* Chef.java
- * Entity for Chef
+/*
  * Author: Smangele Witness Mabaso (220047154)
  * Date: 30 March 2022
  */
