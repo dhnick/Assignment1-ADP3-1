@@ -1,10 +1,11 @@
+
 package za.ac.cput.Repository;
 
-public interface IRepository <C, ID>{
-    C create(C c);
-    C read(ID id);
-    C update(C c);
-    void Delete(ID id);
+public interface IRepository <T, ID>{
+  T create(T t);
+  T read(ID id);
+  T update(T t);
+  void delete(ID id);
 
 
 }
