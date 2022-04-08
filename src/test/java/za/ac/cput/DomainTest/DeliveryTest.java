@@ -1,5 +1,10 @@
 package za.ac.cput.DomainTest;
-
+/*
+    DeliveryTest.java
+    Test case for DeliveryTest
+    Author: Jody Heideman (219307725)
+    Date: 27/03/2022
+ */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.Domain.Delivery;
 
@@ -11,13 +16,13 @@ class DeliveryTest {
     public void Test(){
 
             Delivery delivery = new Delivery.Builder()
-                    .setDeliveryID(55555)
+                    .setDeliveryID("55555")
                     .setDeliveryMethod("Uber eats")
                     .setDeliveryAddress("2 Johnson road")
                     .setDeliveryTime("15:00")
                     .build();
             Delivery delivery1 = new Delivery.Builder()
-                        .setDeliveryID(21930)
+                        .setDeliveryID("21930")
                                 .build();
 
             System.out.println(delivery.toString());

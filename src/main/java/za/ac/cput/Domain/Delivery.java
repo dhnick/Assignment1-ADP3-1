@@ -8,7 +8,7 @@ package za.ac.cput.Domain;
 
 public class Delivery {
 
-    private int deliveryID;
+    private String deliveryID;
     private String deliveryMethod;
     private String deliveryAddress;
     private String deliveryTime;
@@ -22,11 +22,11 @@ public class Delivery {
 
     }
 
-    public int getDeliveryID() {
+    public String getDeliveryID() {
         return deliveryID;
     }
 
-    public void setDeliveryID(int deliveryID) {
+    public void setDeliveryID(String deliveryID) {
         this.deliveryID = deliveryID;
     }
 
@@ -66,12 +66,12 @@ public class Delivery {
 
     public static class Builder{
 
-        private int deliveryID;
+        private String deliveryID;
         private String deliveryMethod;
         private String deliveryAddress;
         private String deliveryTime;
 
-        public Builder setDeliveryID(int deliveryID){
+        public Builder setDeliveryID(String deliveryID){
             this.deliveryID = deliveryID;
             return this;
         }

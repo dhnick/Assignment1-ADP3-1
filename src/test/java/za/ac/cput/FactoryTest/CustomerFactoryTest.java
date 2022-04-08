@@ -1,3 +1,9 @@
+/* CustomerFactoryTest.java
+   Entity for Customer
+   Author: Damone Hartnick
+   Student Number : 219093717
+   Date: April 2022
+*/
 package za.ac.cput.FactoryTest;
 
 import org.junit.jupiter.api.Test;
@@ -16,7 +22,7 @@ public class CustomerFactoryTest {
                "Hartnick",
                "219093717@mycput.ac.za",
                "22 Jump Street",
-               "0843999111");
+               "087 877 7285");
      System.out.println(customer.toString());
        assertNotNull(customer);
 
