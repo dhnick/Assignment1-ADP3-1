@@ -7,4 +7,5 @@ public interface IRepository <T, ID>{
   T update(T t);
   void delete(ID id);
 
+
 }
