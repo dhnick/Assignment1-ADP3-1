@@ -1,13 +1,18 @@
 package za.ac.cput.Factory;
-
+/*
+    DeliveryFactory.java
+    Entity for DeliveryFactory
+    Author: Jody Heideman (219307725)
+    Date: 27/03/2022
+ */
 
 import za.ac.cput.Domain.Delivery;
 
 public class DeliveryFactory {
 
-    public static Delivery createDelivery(int deliveryID , String deliveryMethod , String deliveryAddress , String deliveryTime)
+    public static Delivery createDelivery(String deliveryID , String deliveryMethod , String deliveryAddress , String deliveryTime)
     {
-        if(Validation.isEmptyInt(deliveryID)) return null;
+        if(Validation.isEmptyString(deliveryID)) return null;
         if(Validation.isEmptyString(deliveryMethod) ||Validation.isEmptyString(deliveryAddress) || Validation.isEmptyString(deliveryTime))
             return null;
 

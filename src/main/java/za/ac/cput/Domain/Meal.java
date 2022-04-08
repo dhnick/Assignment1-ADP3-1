@@ -1,8 +1,8 @@
 
 package za.ac.cput.Domain;
 
-/* Chef.java
- * Entity for Chef
+/* Meal.java
+ * Entity for Meal
  * Author: Smangele Witness Mabaso (220047154)
  * Date: 30 March 2022
  */
