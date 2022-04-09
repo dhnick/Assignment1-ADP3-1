@@ -52,7 +52,7 @@ public class MealRepository implements IMealRepository{
     }
 
     @Override
-    public void Delete(String mealCode) {
+    public void delete(String mealCode) {
         Meal deleteMeal = read(mealCode);
         if (deleteMeal == null) {
             System.out.println("Meal is null");

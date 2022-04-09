@@ -53,7 +53,7 @@ public class ChefRepository implements IChefRepository {
     }
 
     @Override
-    public void Delete(String chefID) {
+    public void delete(String chefID) {
         Chef deleteChef = read(chefID);
         if (deleteChef == null) {
             System.out.println("Chef is null");

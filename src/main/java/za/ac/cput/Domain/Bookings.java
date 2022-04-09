@@ -25,23 +25,23 @@ public class Bookings {
     }
 
     //Getters
-    public String bookingID() {
+    public String getBookingID() {
         return bookingID;
     }
 
-    public String bookingTitle() {
+    public String getBookingTitle() {
         return bookingTitle;
     }
 
-    public String bookingDate() {
+    public String getBookingDate() {
         return bookingDate;
     }
 
-    public String bookingDescription() {
+    public String getBookingDescription() {
         return bookingDescription;
     }
 
-    public String bookingPackage() {
+    public String getBookingPackage() {
         return bookingPackage;
     }
 
@@ -111,7 +111,15 @@ public class Bookings {
             return this;
         }
 
-        //To create a new Booking object
+        public Builder copy (Bookings booking){
+            this.bookingID = booking.bookingID;
+            this.bookingTitle = booking.bookingTitle;
+            this.bookingDate = booking.bookingDate;
+            this.bookingDescription = booking.bookingDescription;
+            this.bookingPackage = booking.bookingPackage;
+            return this;
+    }
+
         public Bookings build(){
             return new Bookings(this);
         }

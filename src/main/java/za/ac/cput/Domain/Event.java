@@ -23,19 +23,19 @@ public class Event {
     }
 
     //Getters
-    public String eventID() {
+    public String getEventID() {
         return eventID;
     }
 
-    public String eventName() {
+    public String getEventName() {
         return eventName;
     }
 
-    public String requestedDate() {
+    public String getRequestedDate() {
         return requestedDate;
     }
 
-    public String eventTheme() {
+    public String getEventTheme() {
         return eventTheme;
     }
     //Setters
@@ -97,7 +97,14 @@ public class Event {
             this.eventTheme = eventTheme;
             return this;
         }
-        //To create a new Booking object
+
+        public Builder copy (Event event){
+            this.eventID = event.eventID;
+            this.eventName = event.eventName;
+            this.requestedDate = event.eventName;
+            this.eventTheme = event.eventTheme;
+            return this;
+    }
         public Event build(){
             return new Event(this);
         }
