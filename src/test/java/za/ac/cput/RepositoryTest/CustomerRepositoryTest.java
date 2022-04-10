@@ -10,9 +10,9 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.Domain.Customer;
-import za.ac.cput.Factory.CustomerFactory;
-import za.ac.cput.Repository.CustomerRepository;
+import za.ac.cput.domain.Customer;
+import za.ac.cput.factory.CustomerFactory;
+import za.ac.cput.repository.CustomerRepository;
 
 
 import static org.junit.jupiter.api.Assertions.*;

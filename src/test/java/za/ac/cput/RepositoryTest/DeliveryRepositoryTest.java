@@ -8,10 +8,9 @@ package za.ac.cput.RepositoryTest;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.Domain.Delivery;
-import za.ac.cput.Domain.Receptionist;
-import za.ac.cput.Factory.DeliveryFactory;
-import za.ac.cput.Repository.DeliveryRepository;
+import za.ac.cput.domain.Delivery;
+import za.ac.cput.factory.DeliveryFactory;
+import za.ac.cput.repository.DeliveryRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -31,7 +30,6 @@ class DeliveryRepositoryTest {
     @Test
     void b_read() {
         Delivery read = repository.read(delivery.getDeliveryID());
-        //assertNotNull(read);
         assertEquals(delivery.getDeliveryID() , read.getDeliveryID());
         System.out.println("Read delivery id, " + read);
     }

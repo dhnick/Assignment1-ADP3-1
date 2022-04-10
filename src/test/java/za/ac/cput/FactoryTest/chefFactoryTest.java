@@ -1,8 +1,8 @@
 package za.ac.cput.FactoryTest;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Chef;
-import za.ac.cput.Factory.chefFactory;
+import za.ac.cput.domain.Chef;
+import za.ac.cput.factory.chefFactory;
 
 
 import static org.junit.jupiter.api.Assertions.*;

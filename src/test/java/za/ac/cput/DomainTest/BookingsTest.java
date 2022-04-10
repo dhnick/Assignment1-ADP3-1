@@ -5,9 +5,7 @@ package za.ac.cput.DomainTest;
  *  Date: 29 March 2022
  * */
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Bookings;
-
-import static org.junit.jupiter.api.Assertions.*;
+import za.ac.cput.domain.Bookings;
 
 class BookingsTest {
     @Test

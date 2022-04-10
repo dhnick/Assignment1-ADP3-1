@@ -5,9 +5,7 @@ package za.ac.cput.DomainTest;
  *  Date: 29 March 2022
  * */
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Event;
-
-import static org.junit.jupiter.api.Assertions.*;
+import za.ac.cput.domain.Event;
 
 class EventTest {
     @Test

@@ -6,8 +6,8 @@ package za.ac.cput.FactoryTest;
     Date: 27/03/2022
  */
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Delivery;
-import za.ac.cput.Factory.DeliveryFactory;
+import za.ac.cput.domain.Delivery;
+import za.ac.cput.factory.DeliveryFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 

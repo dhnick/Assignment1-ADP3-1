@@ -1,9 +1,7 @@
 package za.ac.cput.DomainTest;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Meal;
-
-import static org.junit.jupiter.api.Assertions.*;
+import za.ac.cput.domain.Meal;
 
 class MealTest {
 
@@ -20,3 +18,4 @@ Meal meal = new Meal.Builder().setMealName("Mac and Cheese")
     }
 
 }
+

@@ -6,7 +6,7 @@
 */package za.ac.cput.DomainTest;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Order;
+import za.ac.cput.domain.Order;
 
 public class OrderTest {
 

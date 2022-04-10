@@ -5,10 +5,9 @@ package za.ac.cput.RepositoryTest;
  *  Date: 7 April 2022
  * */
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Bookings;
-import za.ac.cput.Domain.Customer;
-import za.ac.cput.Factory.BookingsFactory;
-import za.ac.cput.Repository.BookingsRepository;
+import za.ac.cput.domain.Bookings;
+import za.ac.cput.factory.BookingsFactory;
+import za.ac.cput.repository.BookingsRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,13 +1,8 @@
 package za.ac.cput.DomainTest;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Waiters;
-import za.ac.cput.Factory.WaitersFactory;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import za.ac.cput.domain.Waiters;
+import za.ac.cput.factory.WaitersFactory;
 
 class WaitersTest {
 

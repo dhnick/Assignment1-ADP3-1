@@ -7,7 +7,7 @@
 package za.ac.cput.DomainTest;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Customer;
+import za.ac.cput.domain.Customer;
 
 public class CustomerTest {
 

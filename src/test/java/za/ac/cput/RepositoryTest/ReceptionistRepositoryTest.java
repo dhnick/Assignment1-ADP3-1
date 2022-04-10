@@ -8,9 +8,9 @@ package za.ac.cput.RepositoryTest;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import za.ac.cput.Domain.Receptionist;
-import za.ac.cput.Factory.ReceptionistFactory;
-import za.ac.cput.Repository.ReceptionistRepository;
+import za.ac.cput.domain.Receptionist;
+import za.ac.cput.factory.ReceptionistFactory;
+import za.ac.cput.repository.ReceptionistRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)

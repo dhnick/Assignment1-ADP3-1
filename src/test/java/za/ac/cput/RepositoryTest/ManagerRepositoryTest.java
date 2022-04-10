@@ -1,22 +1,21 @@
 package za.ac.cput.RepositoryTest;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Delivery;
-import za.ac.cput.Domain.Managers;
-import za.ac.cput.Factory.DeliveryFactory;
-import za.ac.cput.Factory.ManagerFactory;
-import za.ac.cput.Repository.DeliveryRepository;
-import za.ac.cput.Repository.ManagerRepository;
+import org.junit.jupiter.api.TestMethodOrder;
+import za.ac.cput.domain.Managers;
+import za.ac.cput.factory.ManagerFactory;
+import za.ac.cput.repository.ManagerRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class ManagerRepositoryTest {
 
     private static ManagerRepository repository = ManagerRepository.getRepository();
     private static Managers manager = ManagerFactory.createManager("324567","Jason","River" ,"42", "075432213");
 
     @Test
-    void create() {
+    void a_create() {
         Managers created = repository.create(manager);
         assertNotNull(created);
         assertEquals(Managers.getManagerID() , created.getManagerID());
@@ -24,7 +23,7 @@ class ManagerRepositoryTest {
     }
 
     @Test
-    void read() {
+    void b_read() {
         Managers read = repository.read(Managers.getManagerID());
         //assertNotNull(read);
         assertEquals(Managers.getManagerID() , read.getManagerID());
@@ -32,7 +31,7 @@ class ManagerRepositoryTest {
     }
 
     @Test
-    void update() {
+    void c_update() {
 
         Managers updated = new Managers.Builder().copy(manager)
                 .setManagerID("21345")
@@ -47,14 +46,14 @@ class ManagerRepositoryTest {
     }
 
     @Test
-    void delete() {
+    void e_delete() {
 
         repository.delete(Managers.getManagerID());
         assertNotNull(manager);
     }
 
     @Test
-    void getAll() {
+    void d_getAll() {
         System.out.println("Listing all Managers ");
         System.out.println(repository.getAll());
     }

@@ -1,9 +1,8 @@
 package za.ac.cput.FactoryTest;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Managers;
-import za.ac.cput.Domain.Waiters;
-import za.ac.cput.Factory.WaitersFactory;
+import za.ac.cput.domain.Waiters;
+import za.ac.cput.factory.WaitersFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 

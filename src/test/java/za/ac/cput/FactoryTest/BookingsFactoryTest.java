@@ -5,8 +5,8 @@ package za.ac.cput.FactoryTest;
  *  Date: 29 March 2022
  * */
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Bookings;
-import za.ac.cput.Factory.BookingsFactory;
+import za.ac.cput.domain.Bookings;
+import za.ac.cput.factory.BookingsFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 

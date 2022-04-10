@@ -1,8 +1,8 @@
 package za.ac.cput.DomainTest;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Managers;
-import za.ac.cput.Factory.ManagerFactory;
+import za.ac.cput.domain.Managers;
+import za.ac.cput.factory.ManagerFactory;
 
 class ManagersTest {
     @Test

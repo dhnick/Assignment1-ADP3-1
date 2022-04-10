@@ -6,9 +6,7 @@ package za.ac.cput.DomainTest;
     Date: 27/03/2022
  */
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Delivery;
-
-import static org.junit.jupiter.api.Assertions.*;
+import za.ac.cput.domain.Delivery;
 
 class DeliveryTest {
 

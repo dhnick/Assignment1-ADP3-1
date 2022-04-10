@@ -1,10 +1,7 @@
 package za.ac.cput.DomainTest;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.Domain.Chef;
-import za.ac.cput.Domain.Meal;
-
-import static org.junit.jupiter.api.Assertions.*;
+import za.ac.cput.domain.Chef;
 
 class ChefTest {
 
@@ -22,3 +19,4 @@ class ChefTest {
 
 
 }
+
