@@ -1,4 +1,4 @@
-package za.ac.cput.RepositoryTest;
+package za.ac.cput.repositoryTest;
 /*
    DeliveryRepositoryTest.java
     Implementation for DeliveryRepository

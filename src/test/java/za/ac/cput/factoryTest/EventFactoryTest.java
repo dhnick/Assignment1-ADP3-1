@@ -1,4 +1,4 @@
-package za.ac.cput.FactoryTest;
+package za.ac.cput.factoryTest;
 /* EventFactoryTest.Java
  *  Entity for EventFactory
  *  Author: Yasmeen Nel (219250553)

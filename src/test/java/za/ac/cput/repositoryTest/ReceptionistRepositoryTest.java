@@ -1,4 +1,4 @@
-package za.ac.cput.RepositoryTest;
+package za.ac.cput.repositoryTest;
 /*
     ReceptionistRepositoryTest.java
     Implementation for ReceptionistRepository

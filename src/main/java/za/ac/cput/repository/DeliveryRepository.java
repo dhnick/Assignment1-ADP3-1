@@ -1,5 +1,10 @@
 package za.ac.cput.repository;
-
+/*
+    DeliveryRepository.java
+    Entity for DeliveryRepository
+    Author: Jody Heideman (219307725)
+    Date: 06/03/2022
+ */
 
 import za.ac.cput.domain.Delivery;
 

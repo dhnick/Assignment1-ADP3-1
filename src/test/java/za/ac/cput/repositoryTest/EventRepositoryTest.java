@@ -1,4 +1,4 @@
-package za.ac.cput.RepositoryTest;
+package za.ac.cput.repositoryTest;
 /*  EventRepositoryTest.Java
  *  Entity for EventRepositoryTest
  *  Author: Yasmeen Nel (219250553)

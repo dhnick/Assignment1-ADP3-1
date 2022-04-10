@@ -4,7 +4,7 @@
    Student Number : 219093717
    Date: April 2022
 */
-package za.ac.cput.FactoryTest;
+package za.ac.cput.factoryTest;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Customer;

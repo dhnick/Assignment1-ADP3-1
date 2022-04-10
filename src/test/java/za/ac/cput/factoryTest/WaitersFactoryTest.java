@@ -1,4 +1,4 @@
-package za.ac.cput.FactoryTest;
+package za.ac.cput.factoryTest;
 
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Waiters;

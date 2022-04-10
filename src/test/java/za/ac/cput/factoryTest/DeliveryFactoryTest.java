@@ -1,4 +1,4 @@
-package za.ac.cput.FactoryTest;
+package za.ac.cput.factoryTest;
 /*
     DeliveryFactoryTest.java
     Test for DeliveryFactory class

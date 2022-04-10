@@ -1,4 +1,4 @@
-package za.ac.cput.FactoryTest;
+package za.ac.cput.factoryTest;
 /* BookingsFactoryTest.Java
  *  Entity for BookingsFactory
  *  Author: Yasmeen Nel (219250553)

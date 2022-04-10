@@ -16,13 +16,6 @@ public class DeliveryFactory {
         if(Validation.isEmptyString(deliveryMethod) ||Validation.isEmptyString(deliveryAddress) || Validation.isEmptyString(deliveryTime))
             return null;
 
-        /*
-        if(deliveryID == 0) return null;
-        if(deliveryMethod == null ||  deliveryMethod.equals(""))return null;
-        if(deliveryAddress == null ||  deliveryAddress.equals(""))return null;
-        if(deliveryTime == null ||  deliveryTime.equals(""))return null;
-        */
-
         return new Delivery.Builder()
                 .setDeliveryID(deliveryID)
                 .setDeliveryMethod(deliveryMethod)

@@ -4,7 +4,7 @@
    Student Number : 219093717
    Date: April 2022
 */
-package za.ac.cput.RepositoryTest;
+package za.ac.cput.repositoryTest;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
