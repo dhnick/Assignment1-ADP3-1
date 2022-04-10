@@ -1,18 +1,21 @@
 package za.ac.cput.domain;
 
+//chulumano buhle Nkwinda
+//219390983
+//adp3
+
 
 
 public class Payments {
-    private int paymentID;
-    private int customerID;
-    private int paymentType;
-    private int addPayment;
+    private String paymentID;
+    private String customerID;
+    private String paymentType;
+    private String addPayment;
     private String amount;
-    private int updatePayment;
+    private String updatePayment;
     private String cancelPayment;
 
-    public Payments() {
-    }
+
 
     public Payments(PaymentsBuilder payments) {
 
@@ -26,19 +29,19 @@ public class Payments {
         this.cancelPayment = payments.cancelPayment;
     }
 
-    public int getPaymentID() {
+    public String getPaymentID() {
         return paymentID;
     }
 
-    public int getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 
-    public int getPaymentType() {
+    public String getPaymentType() {
         return paymentType;
     }
 
-    public int getAddPayment() {
+    public String getAddPayment() {
         return addPayment;
     }
 
@@ -46,7 +49,7 @@ public class Payments {
         return amount;
     }
 
-    public int getUpdatePayment() {
+    public String getUpdatePayment() {
         return updatePayment;
     }
 
@@ -69,30 +72,30 @@ public class Payments {
     }
 
     public static class PaymentsBuilder {
-        private int paymentID;
-        private int customerID;
-        private int paymentType;
-        private int addPayment;
+        private String paymentID;
+        private String customerID;
+        private String paymentType;
+        private String addPayment;
         private String amount;
-        private int updatePayment;
+        private String updatePayment;
         private String cancelPayment;
 
-        public PaymentsBuilder setPaymentID(int paymentID) {
+        public PaymentsBuilder setPaymentID(String paymentID) {
             this.paymentID = paymentID;
             return this;
         }
 
-        public PaymentsBuilder setCustomerID(int customerID) {
+        public PaymentsBuilder setCustomerID(String customerID) {
             this.customerID = customerID;
             return this;
         }
 
-        public PaymentsBuilder setPaymentType(int paymentType) {
+        public PaymentsBuilder setPaymentType(String paymentType) {
             this.paymentType = paymentType;
             return this;
         }
 
-        public PaymentsBuilder setAddPayment(int addPayment) {
+        public PaymentsBuilder setAddPayment(String addPayment) {
             this.addPayment = addPayment;
             return this;
         }
@@ -102,7 +105,7 @@ public class Payments {
             return this;
         }
 
-        public PaymentsBuilder setUpdatePayment(int updatePayment) {
+        public PaymentsBuilder setUpdatePayment(String updatePayment) {
             this.updatePayment = updatePayment;
             return this;
         }

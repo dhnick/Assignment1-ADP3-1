@@ -1,16 +1,19 @@
 package za.ac.cput.factory;
 
 import za.ac.cput.domain.Payments;
+import za.ac.cput.util.Helper2;
 
 import java.util.UUID;
-
+//chulumano buhle Nkwinda
+//219390983
+//adp3
 public class PaymentsFactory {
-    public static Payments build(int customerID, int paymentType, int addPayment, String amount, int updatePayment, String cancelPayment, int paymentID){
-        if(customerID<0||paymentType<0||addPayment<0||updatePayment<=0||amount.isEmpty()||cancelPayment.isEmpty()){
+    public static Payments createPayments(String customerID, String paymentType, String  addPayment, String amount, String updatePayment, String cancelPayment, String paymentID){
+        if(Helper2.isNotEmpty(paymentID)|| Helper2.isNotEmpty(customerID)||Helper2.isNotEmpty(paymentType)||Helper2.isNotEmpty(addPayment)||Helper2.isNotEmpty(amount)||Helper2.isNotEmpty(updatePayment)||Helper2.isNotEmpty(cancelPayment) )
             return null;
-        }
 
-        String tableID= UUID.randomUUID().toString();
+
+
         return new Payments.PaymentsBuilder()
 
                 .setPaymentID(paymentID)

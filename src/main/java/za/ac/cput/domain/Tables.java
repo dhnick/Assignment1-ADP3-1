@@ -1,9 +1,15 @@
 package za.ac.cput.domain;
 
+import org.apache.maven.surefire.shade.org.apache.commons.lang3.builder.Builder;
+
+import java.util.Locale;
+//chulumano buhle Nkwinda
+//219390983
+//adp3
 public class Tables {
     private String tableID;
     private String tableStatus;
-    private int capacity;
+    private String capacity;
     public String tableType;
 
     public Tables(){
@@ -27,7 +33,7 @@ this.tableID=builder.tableID;
         return tableStatus;
     }
 
-    public int getCapacity() {
+    public String getCapacity() {
         return capacity;
     }
 
@@ -48,7 +54,7 @@ this.tableID=builder.tableID;
     public static class TablesBuilder {
         private String tableID;
         private String tableStatus;
-        private int capacity;
+        private String capacity;
         public String tableType;
 
         public TablesBuilder setTableID(String tableID) {
@@ -61,7 +67,7 @@ this.tableID=builder.tableID;
             return this;
         }
 
-        public TablesBuilder setCapacity(int capacity) {
+        public TablesBuilder setCapacity(String capacity) {
             this.capacity = capacity;
             return this;
         }
