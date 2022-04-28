@@ -1,5 +1,11 @@
 package za.ac.cput.factory;
 
+/* ManagersFactory.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for ManagerFactory
+ *  Date: 27 March 2022
+ * */
+
 import za.ac.cput.domain.Managers;
 
 public class ManagerFactory {

@@ -1,5 +1,11 @@
 package za.ac.cput.repositoryTest;
 
+/* WaitersRepositoryTest.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for WaitersRepositoryTest
+ *  Date: 27 March 2022
+ * */
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;

@@ -1,5 +1,11 @@
 package za.ac.cput.factory;
 
+/* WaitersFactory.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for WaitersFactory
+ *  Date: 27 March 2022
+ * */
+
 import za.ac.cput.domain.Waiters;
 
 public class WaitersFactory {
