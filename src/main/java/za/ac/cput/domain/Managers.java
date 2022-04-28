@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Managers.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for Manager
+ *  Date: 27 March 2022
+ * */
+
 public class Managers {
     private static String ManagerID;
     private String firstname;

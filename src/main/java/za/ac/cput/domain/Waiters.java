@@ -1,5 +1,11 @@
 package za.ac.cput.domain;
 
+/* Waiters.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for Waiters
+ *  Date: 27 March 2022
+ * */
+
 
 public class Waiters {
 

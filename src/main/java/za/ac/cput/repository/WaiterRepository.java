@@ -1,5 +1,11 @@
 package za.ac.cput.repository;
 
+/* WaitersRepository.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for WaitersRepository
+ *  Date: 27 March 2022
+ * */
+
 import za.ac.cput.domain.Waiters;
 
 import java.util.HashSet;

@@ -1,5 +1,11 @@
 package za.ac.cput.factoryTest;
 
+/* WaiterFactoryTest.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for WaiterFactoryTest
+ *  Date: 27 March 2022
+ * */
+
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Waiters;
 import za.ac.cput.factory.WaitersFactory;

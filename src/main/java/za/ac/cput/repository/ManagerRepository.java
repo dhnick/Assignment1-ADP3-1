@@ -1,5 +1,11 @@
 package za.ac.cput.repository;
 
+/* ManagersRepository.Java
+ *  Author: Tim Davids 219296219
+ *  Entity for ManagersRepository
+ *  Date: 27 March 2022
+ * */
+
 import za.ac.cput.domain.Managers;
 
 import java.util.HashSet;
