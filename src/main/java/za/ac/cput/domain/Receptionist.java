@@ -9,8 +9,8 @@ package za.ac.cput.domain;
 public class Receptionist {
 
     private String receptionistID;
-    private int receptionistTime;
-    private int numberOfPeople;
+    private String receptionistTime;
+    private String numberOfPeople;
     private String createReservation;
 
     private Receptionist(){}
@@ -31,19 +31,19 @@ public class Receptionist {
         this.receptionistID = receptionistID;
     }
 
-    public int getReceptionistTime() {
+    public String getReceptionistTime() {
         return receptionistTime;
     }
 
-    public void setReceptionistTime(int receptionistTime) {
+    public void setReceptionistTime(String receptionistTime) {
         this.receptionistTime = receptionistTime;
     }
 
-    public int getNumberOfPeople() {
+    public String getNumberOfPeople() {
         return numberOfPeople;
     }
 
-    public void setNumberOfPeople(int numberOfPeople) {
+    public void setNumberOfPeople(String numberOfPeople) {
         this.numberOfPeople = numberOfPeople;
     }
 
@@ -67,8 +67,8 @@ public class Receptionist {
 
     public static class Builder{
         private String receptionistID;
-        private int receptionistTime;
-        private int numberOfPeople;
+        private String receptionistTime;
+        private String numberOfPeople;
         private String createReservation;
 
         public Builder setReceptionistID(String receptionistID){
@@ -76,11 +76,11 @@ public class Receptionist {
             return this;
         }
 
-        public Builder setReceptionistTime(int receptionistTime){
+        public Builder setReceptionistTime(String receptionistTime){
             this.receptionistTime = receptionistTime;return this;
         }
 
-        public Builder setNumberOfPeople(int numberOfPeople){
+        public Builder setNumberOfPeople(String numberOfPeople){
             this.numberOfPeople = numberOfPeople;
             return this;
         }

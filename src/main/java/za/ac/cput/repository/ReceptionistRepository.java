@@ -7,92 +7,48 @@ package za.ac.cput.repository;
  */
 import za.ac.cput.domain.Receptionist;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class ReceptionistRepository implements IReceptionistRepository {
+public class ReceptionistRepository {
 
-    private static ReceptionistRepository repository = null;
-    private Set<Receptionist> receptionistDB = null;
+
+    private final List<Receptionist> receptionistList;
+    private static ReceptionistRepository repository;
+
 
     private ReceptionistRepository(){
-        receptionistDB = new HashSet<Receptionist>();
+        this.receptionistList = new ArrayList<>();
     }
 
     public static ReceptionistRepository getRepository() {
-
         if (repository == null)
             repository = new ReceptionistRepository();
         return repository;
 
     }
 
-    @Override
-    public Receptionist create(Receptionist receptionist) {
-    boolean success = receptionistDB.add(receptionist);
-    if(!success)
-        return null;
-    return receptionist;
-    }
+    public Receptionist save(Receptionist receptionist) {
 
-    @Override
-    public Receptionist read(String receptionistID) {
-
-        for (Receptionist r : receptionistDB) {
-            if (r.getReceptionistID() == receptionistID) {
-                return r;
-
-            }
+        Optional<Receptionist> read = read(receptionist.getReceptionistID());
+        if(read.isPresent()){
+            delete(read.get());
         }
-
-        return null;
-
-
-    }
-
-    @Override
-    public Receptionist update(Receptionist receptionist) {
-
-    Receptionist oldReceptionist = read(receptionist.getReceptionistID());
-    if(oldReceptionist !=null){
-        receptionistDB.remove(oldReceptionist);
-        receptionistDB.add(receptionist);
+        this.receptionistList.add(receptionist);
         return receptionist;
     }
-    return null;
 
+    public Optional<Receptionist> read(String receptionistId) {
+        return this.receptionistList.stream().filter(c-> c.getReceptionistID().equalsIgnoreCase(receptionistId))
+                .findFirst();
     }
 
-    @Override
-    public void delete(String receptionistID) {
-        Receptionist receptionistToDelete = read(receptionistID);
-        if(receptionistToDelete == null){
-            System.out.println("Receptionist is null");
-        }else {
-            receptionistDB.remove(receptionistToDelete);
-            System.out.println("Receptionist deleted ");
-        }
-
-
-
-
-    }
-
-    @Override
-    public Set<Receptionist> getAll() {
-        return receptionistDB;
+    public void delete(Receptionist delivery) {
+        this.receptionistList.remove(delivery);
     }
 
 
-
-
-
-
-
-
-
-
-
-
+    public List<Receptionist> getAll() {
+        return this.receptionistList;
+    }
 
 }

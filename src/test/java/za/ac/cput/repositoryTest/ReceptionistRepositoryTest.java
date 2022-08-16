@@ -5,56 +5,72 @@ package za.ac.cput.repositoryTest;
     Author: Jody Heideman (219307725)
     Date: 06/04/2022
  */
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
+import za.ac.cput.domain.Delivery;
 import za.ac.cput.domain.Receptionist;
+import za.ac.cput.factory.DeliveryFactory;
 import za.ac.cput.factory.ReceptionistFactory;
+import za.ac.cput.repository.DeliveryRepository;
 import za.ac.cput.repository.ReceptionistRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class ReceptionistRepositoryTest {
 
-    private static ReceptionistRepository repository = ReceptionistRepository.getRepository();
-    private static Receptionist receptionist = ReceptionistFactory.createReceptionist("481592637" ,1600,5,"Table for 5 at 16:00");
+    private Receptionist receptionist;
+    private ReceptionistRepository repository;
+
+
+    @BeforeEach
+    void setUp(){
+        this.receptionist = ReceptionistFactory.createReceptionist("01",
+                "13:00",
+                "01",
+                "Table for 1 at 13:00");
+
+        this.repository = ReceptionistRepository.getRepository();
+    }
+
+    @AfterEach
+    void tearDown(){
+        this.repository.delete(this.receptionist);
+    }
+
+
     @Test
-    void a_create() {
-        Receptionist created = repository.create(receptionist);
-        assertNotNull(created);
-        assertEquals(receptionist.getReceptionistID() , created.getReceptionistID());
-        System.out.println("Created receptionist, " + created);
+    void save() {
+        Receptionist saved = this.repository.save(this.receptionist);
+        assertNotNull(saved);
+        assertSame(this.receptionist,saved);
     }
 
     @Test
-    void b_read() {
-        Receptionist read = repository.read(receptionist.getReceptionistID());
-        //assertNotNull(read);
-        assertEquals(receptionist.getReceptionistID() , read.getReceptionistID());
-        System.out.println("Read receptionist id, " + read);
+    void read() {
+        Receptionist saved = this.repository.save(this.receptionist);
+        Optional<Receptionist> read = this.repository.read(saved.getReceptionistID());
+        assertTrue(read.isPresent());
+        assertSame(saved, read.get());
     }
 
     @Test
-    void c_update() {
-        Receptionist updated = new Receptionist.Builder().copy(receptionist)
-                .setReceptionistID("481592637")
-                .setNumberOfPeople(7)
-                .setReceptionistTime(1900)
-                .setCreateReservation("Table for 7 at 19:00")
-                .build();
-        assertNotNull(repository.update(updated));
-        System.out.println("Updated receptionist, " + updated);
+    void delete() {
+        Receptionist saved = this.repository.save(this.receptionist);
+        List<Receptionist> receptionistList = this.repository.getAll();
+        assertEquals( 1, receptionistList.size());
+        this.repository.delete(saved);
+        receptionistList = this.repository.getAll();
+        assertEquals( 0, receptionistList.size());
+
     }
 
     @Test
-    void e_delete() {
-     repository.delete(receptionist.getReceptionistID());
-    assertNotNull(receptionist);
-    }
+    void findAll() {
+        this.repository.save(this.receptionist);
+        List<Receptionist> receptionistList = this.repository.getAll();
+        assertEquals( 1, receptionistList.size());
 
-    @Test
-    void d_getAll() {
-        System.out.println("Show all: ");
-        System.out.println(repository.getAll());
     }
 }

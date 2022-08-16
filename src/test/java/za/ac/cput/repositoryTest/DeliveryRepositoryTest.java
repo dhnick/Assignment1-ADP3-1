@@ -5,57 +5,75 @@ package za.ac.cput.repositoryTest;
     Author: Jody Heideman (219307725)
     Date: 06/04/2022
  */
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import za.ac.cput.domain.Delivery;
 import za.ac.cput.factory.DeliveryFactory;
 import za.ac.cput.repository.DeliveryRepository;
+
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class DeliveryRepositoryTest {
 
-    private static DeliveryRepository repository = DeliveryRepository.getRepository();
-    private static Delivery delivery = DeliveryFactory.createDelivery
-            ("15926348" , "Uber eats","2 Johnson road","15:00");
+    private Delivery delivery;
+    private DeliveryRepository repository;
+
+
+    @BeforeEach
+    void setUp(){
+          this.delivery = DeliveryFactory.createDelivery(
+                "01",
+                "Pick-up",
+                "15 Cresant street",
+                "13:00"
+        );
+
+        this.repository = DeliveryRepository.getRepository();
+    }
+
+    @AfterEach
+    void tearDown(){
+        this.repository.delete(this.delivery);
+    }
+
+
     @Test
-    void a_create() {
-        Delivery created = repository.create(delivery);
-        assertNotNull(created);
-        assertEquals(delivery.getDeliveryID() , created.getDeliveryID());
-        System.out.println("Created delivery, " + created);
+    void save() {
+        Delivery saved = this.repository.save(this.delivery);
+        assertNotNull(saved);
+        assertSame(this.delivery,saved);
     }
 
     @Test
-    void b_read() {
-        Delivery read = repository.read(delivery.getDeliveryID());
-        assertEquals(delivery.getDeliveryID() , read.getDeliveryID());
-        System.out.println("Read delivery id, " + read);
+    void read() {
+        Delivery saved = this.repository.save(this.delivery);
+        Optional<Delivery> read = this.repository.read(saved.getDeliveryID());
+        assertTrue(read.isPresent());
+        assertSame(saved, read.get());
     }
 
     @Test
-    void c_update() {
-        Delivery updated = new Delivery.Builder().copy(delivery)
-                .setDeliveryID("15926348")
-                .setDeliveryMethod("Uber Eats")
-                .setDeliveryAddress("20 Cliffoney street")
-                .setDeliveryTime("13:00")
-                .build();
-        assertNotNull(repository.update(updated));
-        System.out.println("Updated delivery, " + updated);
-    }
+    void delete() {
+        Delivery saved = this.repository.save(this.delivery);
+        List<Delivery> deliveryList = this.repository.getAll();
+        assertEquals( 1, deliveryList.size());
+        this.repository.delete(saved);
+        deliveryList = this.repository.getAll();
+        assertEquals( 0, deliveryList.size());
 
-    @Test
-    void e_delete() {
-        repository.delete(delivery.getDeliveryID());
-        assertNotNull(delivery);
 
     }
 
     @Test
-    void d_getAll() {
-        System.out.println("Show all: ");
-        System.out.println(repository.getAll());
+    void findAll() {
+        this.repository.save(this.delivery);
+        List<Delivery> studentAddressList = this.repository.getAll();
+        assertEquals( 1, studentAddressList.size());
+
+
+
+
     }
 }

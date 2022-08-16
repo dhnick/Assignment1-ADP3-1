@@ -8,16 +8,16 @@ package za.ac.cput.repository;
 
 import za.ac.cput.domain.Delivery;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-public class DeliveryRepository implements IDeliveryRepository{
+public class DeliveryRepository {
 
-    private static DeliveryRepository repository = null;
-    private Set<Delivery> deliveryDB = null;
+    private final List<Delivery> deliveryList;
+    private static DeliveryRepository repository;
+
 
     private DeliveryRepository(){
-        deliveryDB = new HashSet<Delivery>();
+        this.deliveryList = new ArrayList<>();
     }
 
     public static DeliveryRepository getRepository() {
@@ -27,51 +27,27 @@ public class DeliveryRepository implements IDeliveryRepository{
 
     }
 
-    @Override
-    public Delivery create(Delivery delivery) {
-        boolean success = deliveryDB.add(delivery);
-        if(!success)
-            return null;
+    public Delivery save(Delivery delivery) {
+
+        Optional<Delivery> read = read(delivery.getDeliveryID());
+        if(read.isPresent()){
+            delete(read.get());
+        }
+        this.deliveryList.add(delivery);
         return delivery;
     }
 
-    @Override
-    public Delivery read(String deliveryID) {
-        for (Delivery d : deliveryDB) {
-            if (d.getDeliveryID() == deliveryID) {
-                return d;
-
-            }
-        }
-
-        return null;
+    public Optional<Delivery> read(String deliveryID) {
+        return this.deliveryList.stream().filter(c-> c.getDeliveryID().equalsIgnoreCase(deliveryID))
+                .findFirst();
     }
 
-    @Override
-    public Delivery update(Delivery delivery) {
-        Delivery oldDelivery = read(delivery.getDeliveryID());
-        if(oldDelivery !=null){
-            deliveryDB.remove(oldDelivery);
-            deliveryDB.add(delivery);
-            return delivery;
-        }
-        return null;
+    public void delete(Delivery delivery) {
+        this.deliveryList.remove(delivery);
     }
 
-    @Override
-    public void delete(String deliveryID) {
-        Delivery deliveryToDelete = read(deliveryID);
-        if(deliveryToDelete == null){
-            System.out.println("Delivery is null ");
-        }else{
-            deliveryDB.remove(deliveryToDelete);
-            System.out.println("Delivery deleted ");
-        }
 
-    }
-
-    @Override
-    public Set<Delivery> getAll() {
-        return deliveryDB;
+    public List<Delivery> getAll() {
+        return this.deliveryList;
     }
 }
