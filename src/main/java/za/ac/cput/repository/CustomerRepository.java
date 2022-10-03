@@ -8,69 +8,63 @@ package za.ac.cput.repository;
 
 import za.ac.cput.domain.Customer;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class CustomerRepository implements ICustomerRepository {
-    private static CustomerRepository repository = null;
-    private  Set<Customer> customerDB = null;
+public class CustomerRepository {
+
+    private List<Customer> customerList;
+    private static CustomerRepository CUSTOMER_REPOSITORY;
+
 
     private CustomerRepository(){
-      customerDB = new HashSet<Customer>();
+      this.customerList = new ArrayList<>();
     }
 
     public static CustomerRepository getRepository() {
-        if (repository == null)
+        if (CUSTOMER_REPOSITORY == null)
         {
-            repository = new CustomerRepository();
+            CUSTOMER_REPOSITORY = new CustomerRepository();
         }
-        return repository;
+        return CUSTOMER_REPOSITORY;
     }
 
-    @Override
-    public Customer create(Customer customer) {
-        this.customerDB.add(customer);
+
+    public Customer save (Customer customer) {
+        Optional<Customer> read = read(customer.getCustomerID());
+        if (read.isPresent()){
+            delete(read.get());
+        }
+        this.customerList.add(customer);
         return customer;
 
+    }
+
+
+    public Optional <Customer>  read( String customerID) {
+       return this.customerList.stream().filter(g -> g.getCustomerID().equalsIgnoreCase(customerID))
+               .findFirst();
+    }
+
+
+    public void  delete(Customer customer) {
+        this.customerList.remove(customer);
 
     }
 
-    @Override
-    public Customer read( String customerID) {
-        for (Customer c : customerDB) {
-            if (c.getCustomerID().equals(customerID)) {
-                return c;
-            }
-        }
-        return null;
+    public List<Customer> findAll() { return this.customerList;}
 
+    public List<Customer>findByCustomerId(String customerID) {
+        return this.customerList.stream().filter( g -> g.getCustomerID().equalsIgnoreCase(customerID))
+                .collect(Collectors.toList());
     }
 
-    @Override
-    public Customer update(Customer customer) {
-        Customer firstCustomer = read(customer.getCustomerID());
-        if (firstCustomer != null) {
-            customerDB.remove(firstCustomer);
-            customerDB.add(customer);
-            return customer;
-        }
-        return null;
+    public Optional<Customer> findCustomerFirstNameByEmail(String email) {
+        return this.customerList.stream().filter(  g -> g.getEmail().equalsIgnoreCase(email))
+                .findFirst();
     }
 
-    @Override
-    public void  delete(String customerID) {
-        Customer deleteCustomer = read(customerID);
-        if (deleteCustomer == null) {
-            System.out.println("Customer is null.");
-        }
-        customerDB.remove(deleteCustomer);
-        System.out.println("Customer has been  removed.");
+    public boolean existsByEmail (String email) { return existsByEmail(email);}
 
-    }
-
-    @Override
-    public Set<Customer> getAll() {
-        return customerDB;
-    }
-
+    public boolean existsByCustomerId ( String customerID) { return  existsByCustomerId(customerID);}
 }

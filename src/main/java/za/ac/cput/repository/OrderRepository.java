@@ -6,70 +6,59 @@
 */
 package za.ac.cput.repository;
 import za.ac.cput.domain.Order;
-import java.util.HashSet;
-import java.util.Set;
 
-public class OrderRepository implements IOrderRepository {
+import java.util.*;
+import java.util.stream.Collectors;
 
-    private static OrderRepository repository = null;
-    private Set<Order> orderDB;
+public class OrderRepository {
+
+    private List<Order> orderList;
+    private static OrderRepository ORDER_REPOSITORY;
 
 
-    private OrderRepository(){this.orderDB = new HashSet<>();}
+
+    private OrderRepository(){this.orderList = new ArrayList<>();}
 
     public static OrderRepository getRepository() {
-        if (repository == null)
+        if (ORDER_REPOSITORY == null)
         {
-            repository = new OrderRepository();
+            ORDER_REPOSITORY = new OrderRepository();
         }
-        return repository;
+        return ORDER_REPOSITORY;
 
     }
 
-    @Override
-    public Order create(Order order) {
-        this.orderDB.add(order);
+
+    public Order save (Order order) {
+        Optional<Order> read = read(order.getOrderID());
+        if ( read.isPresent()){
+            delete(String.valueOf(read.get()));  //fix error
+        }
+        this.orderList.add(order);
         return order;
     }
 
-    @Override
-    public Order read(String orderID) {
-        for (Order od : orderDB){
-            if (od.getOrderID().equals(orderID)){
-                return od;
-            }
-        }
-        return null;
-    }
 
-    @Override
-    public Order update(Order order) {
-        Order firstOrder = read(order.getOrderID());
-        if (firstOrder != null){
-            orderDB.remove(firstOrder);
-            orderDB.add(order);
-            return order;
-        }
-        return null;
+    public Optional <Order> read( String orderID) {
+       return this.orderList.stream().filter(g -> g.getOrderID().equalsIgnoreCase(orderID))
+               .findFirst();
     }
 
 
-
-    @Override
-    public void delete(String orderID) {
-        Order deleteOrder = read(orderID);
-        if (deleteOrder == null) {
-            System.out.println("Order is null.");
-        }
-        orderDB.remove(deleteOrder);
-        System.out.println("Order has been removed.");
+    public void delete(String order) {
+       this.orderList.remove(order);
 
     }
 
-    @Override
-    public Set<Order> getAll() {
-        return orderDB;
+
+   public List<Order> findAll() {return this.orderList;}
+
+    public List<Order> findByOrderId ( String orderID) {
+        return this.orderList.stream().filter( g -> g.getOrderID().equalsIgnoreCase(orderID))
+                .collect(Collectors.toList());
     }
+
+   public boolean existsByOrderId ( String orderID) { return existsByOrderId(orderID);}
 
 
 }

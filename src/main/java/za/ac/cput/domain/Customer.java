@@ -6,15 +6,25 @@
 */
 package za.ac.cput.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Customer {
+
+    @NotNull
+    @Id
     private String customerID;
     private String firstName;
     private String lastName;
+
+    @NotNull
     private String email;
     private String address;
     private String contactNumber;
 
-    //Insert private constructor
+    protected Customer(){}
     private Customer(Builder builder){
         this.customerID = builder.customerID;
         this.firstName = builder.firstName;
@@ -25,66 +35,31 @@ public class Customer {
 
     }
 
-
-    public String getCustomerID() {
+    public  String getCustomerID() {
         return customerID;
-    }
-
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getAddress() {
         return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getContactNumber() {
         return contactNumber;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
-    }
 
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerID='" + customerID + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", address='" + address + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
-                '}';
-    }
 
     public static class Builder {
         private String customerID;
@@ -140,5 +115,17 @@ public class Customer {
 
             }
 
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerID='" + customerID + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", contactNumber='" + contactNumber + '\'' +
+                '}';
     }
 }

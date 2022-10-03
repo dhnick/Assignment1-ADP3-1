@@ -1,20 +1,28 @@
-/* Customer.java
-   Entity for Customer
+/* Order.java
+   Entity for Order
    Author: Damone Hartnick
    Student Number : 219093717
    Date: April 2022
 */
 package za.ac.cput.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Order {
 
+    @NotNull
+    @Id
     private String  orderID;
     private String orderDetails;
     private String orderType ;
+    @NotNull
     private int orderQuantity;
 
+    protected Order() {}
 
-    //insert private constructor
     private Order(Builder builder){
        this.orderID = builder.orderID;
        this.orderDetails = builder.orderDetails;
@@ -26,43 +34,18 @@ public class Order {
         return orderID;
     }
 
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
-    }
-
     public String getOrderDetails() {
         return orderDetails;
-    }
-
-    public void setOrderDetails(String orderDetails) {
-        this.orderDetails = orderDetails;
     }
 
     public String getOrderType() {
         return orderType;
     }
 
-    public void setOrderType(String orderType) {
-        this.orderType = orderType;
-    }
-
     public int getOrderQuantity() {
         return orderQuantity;
     }
 
-    public void setOrderQuantity(int orderQuantity) {
-        this.orderQuantity = orderQuantity;
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderID='" + orderID + '\'' +
-                ", orderDetails='" + orderDetails + '\'' +
-                ", orderType='" + orderType + '\'' +
-                ", orderQuantity=" + orderQuantity +
-                '}';
-    }
 
 
     public static class Builder {
@@ -107,6 +90,16 @@ public class Order {
         }
 
 
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderID='" + orderID + '\'' +
+                ", orderDetails='" + orderDetails + '\'' +
+                ", orderType='" + orderType + '\'' +
+                ", orderQuantity=" + orderQuantity +
+                '}';
     }
 
 
