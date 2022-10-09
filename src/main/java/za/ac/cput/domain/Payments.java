@@ -1,8 +1,10 @@
 package za.ac.cput.domain;
 
-//chulumano buhle Nkwinda
-//219390983
-//adp3
+/* Payments.Java
+ *  Entity for Payments
+ *  Author: Chulumanco Buhle Nkwindana (219390983)
+ *  Date: 29 March 2022
+ * */
 
 
 
@@ -132,5 +134,6 @@ public class Payments {
 
             return this;
         }
+
+        }
     }
-}

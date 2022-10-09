@@ -1,12 +1,18 @@
 package za.ac.cput.repository;
 
 import za.ac.cput.domain.Payments;
+import za.ac.cput.domain.Tables;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
-//chulumano buhle Nkwinda
-//219390983
-//adp3
+import java.util.stream.Collectors;
+
+/* PaymentsRepository.Java
+ *  Entity for Payments
+ *  Author: Chulumanco Buhle Nkwindana (219390983)
+ *  Date: 29 March 2022
+ * */
 public class PaymentsRepository implements IPaymentsRepository{
 
     private static PaymentsRepository repository = null;
@@ -65,4 +71,10 @@ public class PaymentsRepository implements IPaymentsRepository{
     public Set<Payments> getAll() {
         return paymentsDB;
     }
-}
+
+    public List<Payments> findPaymentId(String paymentID) {
+            return this.paymentsDB.stream().filter( g -> g.getPaymentID().equalsIgnoreCase(paymentID))
+                    .collect(Collectors.toList());
+        }
+    }
+
