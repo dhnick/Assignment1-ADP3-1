@@ -17,9 +17,9 @@ public class OrderFactoryTest {
      @Test
     public void test (){
          Order order = OrderFactory.createOrder(
-                 "67GD",
-                 "Seafood Platter",
-                 "Delivery",
+                 "#DFD93138973",
+                 "Friday Night Special",
+                 "Medium",
                  2);
          System.out.println(order.toString());
          assertNotNull(order);

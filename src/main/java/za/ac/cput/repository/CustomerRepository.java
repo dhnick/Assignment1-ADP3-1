@@ -6,65 +6,24 @@
 */
 package za.ac.cput.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Customer;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Optional;
 
-public class CustomerRepository {
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 
-    private List<Customer> customerList;
-    private static CustomerRepository CUSTOMER_REPOSITORY;
+     List<Customer> findAll();
+     Customer findByCustomerId( String customerID);
 
+    void deleteCustomerByCustomerID(String customerID);
 
-    private CustomerRepository(){
-      this.customerList = new ArrayList<>();
-    }
+    Optional<Customer> findByFirstName(String firstname);
 
-    public static CustomerRepository getRepository() {
-        if (CUSTOMER_REPOSITORY == null)
-        {
-            CUSTOMER_REPOSITORY = new CustomerRepository();
-        }
-        return CUSTOMER_REPOSITORY;
-    }
+    //List<Customer> findByEmail( String email);
 
 
-    public Customer save (Customer customer) {
-        Optional<Customer> read = read(customer.getCustomerID());
-        if (read.isPresent()){
-            delete(read.get());
-        }
-        this.customerList.add(customer);
-        return customer;
-
-    }
-
-
-    public Optional <Customer>  read( String customerID) {
-       return this.customerList.stream().filter(g -> g.getCustomerID().equalsIgnoreCase(customerID))
-               .findFirst();
-    }
-
-
-    public void  delete(Customer customer) {
-        this.customerList.remove(customer);
-
-    }
-
-    public List<Customer> findAll() { return this.customerList;}
-
-    public List<Customer>findByCustomerId(String customerID) {
-        return this.customerList.stream().filter( g -> g.getCustomerID().equalsIgnoreCase(customerID))
-                .collect(Collectors.toList());
-    }
-
-    public Optional<Customer> findCustomerFirstNameByEmail(String email) {
-        return this.customerList.stream().filter(  g -> g.getEmail().equalsIgnoreCase(email))
-                .findFirst();
-    }
-
-    public boolean existsByEmail (String email) { return existsByEmail(email);}
-
-    public boolean existsByCustomerId ( String customerID) { return  existsByCustomerId(customerID);}
 }

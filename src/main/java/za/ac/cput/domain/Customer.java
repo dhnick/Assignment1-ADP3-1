@@ -9,9 +9,10 @@ package za.ac.cput.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @Entity
-public class Customer {
+public class Customer implements Serializable {
 
     @NotNull
     @Id
@@ -25,6 +26,8 @@ public class Customer {
     private String contactNumber;
 
     protected Customer(){}
+
+
     private Customer(Builder builder){
         this.customerID = builder.customerID;
         this.firstName = builder.firstName;

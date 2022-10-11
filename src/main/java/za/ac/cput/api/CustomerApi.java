@@ -12,36 +12,35 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
 import za.ac.cput.domain.Customer;
-import za.ac.cput.service.ICustomerService;
-
+import za.ac.cput.service.impl.CustomerServiceImpl;
 
 
 @Component
 public class CustomerApi {
 
-    public final ICustomerService customerService;
-
+    public final CustomerServiceImpl customerService;
 
     @Autowired
-    public CustomerApi ( ICustomerService customerService){
+    public CustomerApi ( CustomerServiceImpl customerService){
         this.customerService = customerService;
     }
 
-    public Customer save ( Customer customer) {
-        try {
-            if (customerService.findByCustomerId(customer.getCustomerID()) != null)
-            {
-                return customerService.create(customer);
-            }
 
-            else {
-                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer ID not found , please create customer first");
-            }
-
-        } catch ( IllegalArgumentException ex ){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer ID not found , Please create customer first");
-              }
-
-        }
+    public Customer save (Customer customer){
+        this.customerService.read(customer.getCustomerID())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Customer ID not found"));
+        return this.customerService.save(customer);
     }
+
+
+    // links to customer controller
+    //public Customer getByCustomerID (String customerID){
+     // Customer = this.customerService.findByCustomerId(customerID);
+     // if (.isEmpty())
+        //  return null;
+    //  else
+          //return list.get(0);
+
+    }
+
 
