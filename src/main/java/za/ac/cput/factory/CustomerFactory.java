@@ -5,9 +5,9 @@
 */
 package za.ac.cput.factory;
 
+
 import za.ac.cput.domain.Customer;
 import za.ac.cput.util.GenericHelper;
-
 
 public class CustomerFactory {
     public static Customer createCustomer( String customerID, String firstName, String lastName, String email , String address, String contactNumber ) {

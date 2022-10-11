@@ -17,10 +17,10 @@ public class CustomerFactoryTest {
  @Test
     public void test(){
        Customer customer = CustomerFactory.createCustomer(
-               "25G",
-               "Damone",
-               "Hartnick",
-               "219093717@mycput.ac.za",
+               "979219WD",
+               "Nick",
+               "Coleman",
+               "ColemanN@gmail.com",
                "22 Jump Street",
                "087 877 7285");
      System.out.println(customer.toString());

@@ -6,71 +6,24 @@
 */
 package za.ac.cput.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Customer;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 
-public class CustomerRepository implements ICustomerRepository {
-    private static CustomerRepository repository = null;
-    private  Set<Customer> customerDB = null;
+@Repository
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 
-    private CustomerRepository(){
-      customerDB = new HashSet<Customer>();
-    }
+     List<Customer> findAll();
+     Customer findByCustomerId( String customerID);
 
-    public static CustomerRepository getRepository() {
-        if (repository == null)
-        {
-            repository = new CustomerRepository();
-        }
-        return repository;
-    }
+    void deleteCustomerByCustomerID(String customerID);
 
-    @Override
-    public Customer create(Customer customer) {
-        this.customerDB.add(customer);
-        return customer;
+    Optional<Customer> findByFirstName(String firstname);
 
+    //List<Customer> findByEmail( String email);
 
-    }
-
-    @Override
-    public Customer read( String customerID) {
-        for (Customer c : customerDB) {
-            if (c.getCustomerID().equals(customerID)) {
-                return c;
-            }
-        }
-        return null;
-
-    }
-
-    @Override
-    public Customer update(Customer customer) {
-        Customer firstCustomer = read(customer.getCustomerID());
-        if (firstCustomer != null) {
-            customerDB.remove(firstCustomer);
-            customerDB.add(customer);
-            return customer;
-        }
-        return null;
-    }
-
-    @Override
-    public void  delete(String customerID) {
-        Customer deleteCustomer = read(customerID);
-        if (deleteCustomer == null) {
-            System.out.println("Customer is null.");
-        }
-        customerDB.remove(deleteCustomer);
-        System.out.println("Customer has been  removed.");
-
-    }
-
-    @Override
-    public Set<Customer> getAll() {
-        return customerDB;
-    }
 
 }
