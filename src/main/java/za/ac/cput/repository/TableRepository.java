@@ -1,12 +1,19 @@
 package za.ac.cput.repository;
 
+import za.ac.cput.domain.Delivery;
 import za.ac.cput.domain.Tables;
 
 import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-//chulumano buhle Nkwinda
-//219390983
-//adp3
+import java.util.stream.Collectors;
+
+/* TablesRepository.Java
+ *  Entity for Tables
+ *  Author: Chulumanco Buhle Nkwindana (219390983)
+ *  Date: 29 March 2022
+ * */
 public class TableRepository implements ITablesRepository{
 
     private static TableRepository repository = null;
@@ -19,8 +26,12 @@ public class TableRepository implements ITablesRepository{
         return repository;
     }
 
+
+
+
+
     @Override
-    public Tables create(Tables tables) {
+    public Tables create (Tables tables) {
         this.tablesDB.add(tables);
         return tables;
     }
@@ -62,5 +73,10 @@ public class TableRepository implements ITablesRepository{
     @Override
     public Set<Tables> getAll() {
         return tablesDB;
+    }
+
+    public List<Tables> findByTableId(String tableID) {
+        return this.tablesDB.stream().filter( g -> g.getTableID().equalsIgnoreCase(tableID))
+                .collect(Collectors.toList());
     }
 }

@@ -3,9 +3,11 @@ import za.ac.cput.domain.Tables;
 import za.ac.cput.util.Helper2;
 
 import java.util.UUID;
-//chulumano buhle Nkwinda
-//219390983
-//adp3
+/* TablesFactory.Java
+/ *  Entity for Tables
+ *  Author: Chulumanco Buhle Nkwindana (219390983)
+ *  Date: 29 March 2022
+ * */
 public class TablesFactory {
     public static Tables createTables(String tableID,String tableStatus,String capacity,String tableType){
     if (Helper2.isNotEmpty(tableStatus) || Helper2.isNotEmpty(capacity)||Helper2.isNotEmpty(tableType)|| Helper2.isNotEmpty(tableID))

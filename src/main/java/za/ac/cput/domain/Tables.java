@@ -3,9 +3,11 @@ package za.ac.cput.domain;
 import org.apache.maven.surefire.shade.org.apache.commons.lang3.builder.Builder;
 
 import java.util.Locale;
-//chulumano buhle Nkwinda
-//219390983
-//adp3
+/* Tables.Java
+ *  Entity for Tables
+ *  Author: Chulumanco Buhle Nkwindana (219390983)
+ *  Date: 29 March 2022
+ * */
 public class Tables {
     private String tableID;
     private String tableStatus;
