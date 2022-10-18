@@ -28,7 +28,7 @@ public class DeliveryFactory {
     public static class Validation{
 
             public static boolean isEmptyString(String s ){
-                return s == null || s.equals("") || s.isEmpty() || s.equalsIgnoreCase("null");
+                return s == null  || s.isEmpty() || s.equalsIgnoreCase("null");
 
             }
 

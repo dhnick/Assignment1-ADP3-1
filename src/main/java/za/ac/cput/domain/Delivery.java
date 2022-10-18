@@ -6,12 +6,21 @@ package za.ac.cput.domain;
     Date: 27/03/2022
  */
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+import static javax.persistence.GenerationType.SEQUENCE;
+import static javax.persistence.GenerationType.TABLE;
+
+@Entity
+@Table(name="delivery")
 public class Delivery {
 
+    @Id
     private String deliveryID;
-    private String deliveryMethod;
-    private String deliveryAddress;
-    private String deliveryTime;
+    private String deliveryMethod ,deliveryAddress ,deliveryTime;
+
+    private Delivery() {}
 
     private Delivery(Builder builder){
 
@@ -26,42 +35,16 @@ public class Delivery {
         return deliveryID;
     }
 
-    public void setDeliveryID(String deliveryID) {
-        this.deliveryID = deliveryID;
-    }
-
     public String getDeliveryMethod() {
         return deliveryMethod;
-    }
-
-    public void setDeliveryMethod(String deliveryMethod) {
-        this.deliveryMethod = deliveryMethod;
     }
 
     public String getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-
     public String getDeliveryTime() {
         return deliveryTime;
-    }
-
-    public void setDeliveryTime(String deliveryTime) {
-        this.deliveryTime = deliveryTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Delivery{" +
-                "deliveryID = " + deliveryID +
-                ", deliveryMethod = '" + deliveryMethod + '\'' +
-                ", deliveryAddress = '" + deliveryAddress + '\'' +
-                ", deliveryTime = '" + deliveryTime + '\'' +
-                '}';
     }
 
     public static class Builder{
@@ -94,10 +77,10 @@ public class Delivery {
 
         public Builder copy(Delivery delivery){
 
-            this.deliveryID = deliveryID;
-            this.deliveryMethod = deliveryMethod;
-            this.deliveryAddress = deliveryAddress;
-            this.deliveryTime = deliveryTime;
+            this.deliveryID = delivery.deliveryID;
+            this.deliveryMethod = delivery.deliveryMethod;
+            this.deliveryAddress = delivery.deliveryAddress;
+            this.deliveryTime = delivery.deliveryTime;
             return this;
 
 
@@ -106,5 +89,14 @@ public class Delivery {
             return new Delivery(this);
         }
 
+    }
+    @Override
+    public String toString() {
+        return "Delivery{" +
+                "deliveryID = " + deliveryID +
+                ", deliveryMethod = '" + deliveryMethod + '\'' +
+                ", deliveryAddress = '" + deliveryAddress + '\'' +
+                ", deliveryTime = '" + deliveryTime + '\'' +
+                '}';
     }
 }
