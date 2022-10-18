@@ -6,22 +6,21 @@ package za.ac.cput.service;
     Date: 14/08/2022
 */
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Delivery;
-import za.ac.cput.repository.IDeliveryRepository;
+import za.ac.cput.repository.DeliveryRepository;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-@Service
 public class DeliveryService implements IDeliveryService{
-    @Autowired
-      public IDeliveryRepository repository;
+
+    private final DeliveryRepository repository;
     private static IDeliveryService service;
 
+
+    private DeliveryService(){
+        this.repository = DeliveryRepository.getRepository();
+    }
 
     public static IDeliveryService getService() {
         if (service == null)
@@ -29,39 +28,22 @@ public class DeliveryService implements IDeliveryService{
         return service;
 
     }
-    @Override
+
     public Delivery save(Delivery delivery) {
-       return repository.save(delivery);
-
+       return this.repository.save(delivery);
         }
 
-    @Override
-    public Delivery read(String deliveryId) {
-        return this.repository.findById(deliveryId).orElseGet(null);
+
+    public Optional<Delivery> read(String s) {
+        return this.repository.read(s);
     }
 
-    @Override
-    public Delivery update(Delivery deliveryId)
-    {
-        if(this.repository.existsById(deliveryId.getDeliveryID()))
-        {
-            return this.repository.save(deliveryId);
-        }
-
-        return null;
-    }
-    @Override
-    public boolean delete(String deliveryId) {
-        this.repository.deleteById(deliveryId);
-
-        if(this.repository.existsById(deliveryId)){
-            return false;
-        }
-        return true;
+    public void delete(Delivery delivery) {
+        this.repository.delete(delivery);
     }
 
-    @Override
-    public Set<Delivery> getAll() {
-        return this.repository.findAll().stream().collect(Collectors.toSet());
+
+    public List<Delivery> getAll() {
+        return this.repository.getAll();
     }
 }

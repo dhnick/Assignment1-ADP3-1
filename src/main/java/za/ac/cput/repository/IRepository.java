@@ -1,15 +1,15 @@
 
 package za.ac.cput.repository;
 
-import za.ac.cput.domain.Receptionist;
-
+import javax.swing.text.html.Option;
 import java.util.Optional;
-@Deprecated
+
 public interface IRepository <T, ID>{
-  public T create(T t);
-  public T read(ID id);
-  public T update(T t);
-  public boolean delete(ID id);
+  T save(T t);
+  Optional<T> read(ID id);
+   void delete(ID id);
+
+
 
 
 }
