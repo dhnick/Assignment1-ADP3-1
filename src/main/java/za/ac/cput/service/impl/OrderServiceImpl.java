@@ -14,16 +14,15 @@ import za.ac.cput.service.OrderService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private final OrderRepository orderRepository;
+    private static OrderService service = null;
 
     @Autowired
-    public OrderServiceImpl(OrderRepository orderRepository)
-    {this.orderRepository = orderRepository;}
-
+    private  OrderRepository orderRepository;
 
 
     @Override
@@ -32,9 +31,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Optional<Order> read(String s) {
-        return this.orderRepository.findById(s);
+    public Optional<Order> read(String orderID) {
+        return this.orderRepository.findById(orderID);
 
+    }
+
+    @Override
+    public Order update(Order order) {
+        if (this.orderRepository.existsById(order.getOrderID())){
+            return this.orderRepository.save(order);}
+        return order;
     }
 
     @Override
@@ -42,17 +48,25 @@ public class OrderServiceImpl implements OrderService {
         this.orderRepository.delete(order);
     }
 
-    // Finds Order by orderID
+
     @Override
-    public Order findByOrderId(String orderID) {
-        return (Order) this.orderRepository.findByOrderId(orderID);
+    public boolean delete(String orderID) {
+        this.orderRepository.deleteById(orderID);
+        if(this.orderRepository.existsById(orderID)){
+            System.out.println("Order: "+orderID+" not Deleted");
+            return false;
+        }
+        else{
+            System.out.println("Order Deleted");
+            return true;
+        }
     }
 
 
     // List of all Orders
     @Override
     public List<Order> findAll() {
-        return this.orderRepository.findAll();
+        return this.orderRepository.findAll().stream().collect(Collectors.toList());
     }
 
 

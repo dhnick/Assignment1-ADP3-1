@@ -11,19 +11,20 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Customer;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String> {
 
      List<Customer> findAll();
-     Customer findByCustomerId( String customerID);
 
-    void deleteCustomerByCustomerID(String customerID);
 
-    Optional<Customer> findByFirstName(String firstname);
+    Customer update (Customer customer);
+    boolean delete (String customerID);
 
-    //List<Customer> findByEmail( String email);
+
+
+
 
 
 }

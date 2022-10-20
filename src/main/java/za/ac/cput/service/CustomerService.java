@@ -15,23 +15,14 @@ import java.util.Optional;
 
 public interface CustomerService extends IService <Customer, String> {
 
+    // Set<Customer>findAll ();
     List <Customer> findAll();
-    Customer findByCustomerId ( String customerID);
-    void deleteCustomerByCustomerID( String customerID);
 
 
-    Optional<Customer> findByFirstName ( String firstname);
+    Customer update (Customer customer);
+    boolean delete (String customerID);
 
 
-    //boolean existsByEmail ( String email);
 
-    //boolean existsByCustomerId( String customerID);
-    //void deleteById(String id);
-
-    //boolean delete(String customerID); // new
-
-    // findByFirstName
-    // check email valid and exist
-    // check customerID valid and exist
 
 }

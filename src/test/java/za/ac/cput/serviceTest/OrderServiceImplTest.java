@@ -13,6 +13,8 @@ import za.ac.cput.domain.Order;
 import za.ac.cput.factory.OrderFactory;
 import za.ac.cput.service.impl.OrderServiceImpl;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -21,62 +23,54 @@ class OrderServiceImplTest {
     @Autowired
     private OrderServiceImpl service;
 
-    private Order order1 = OrderFactory.createOrder("56S2D",
+    private final Order order =
+            OrderFactory.createOrder(
+            "#565678",
             "Family Special",
             "Large",
             4) ;
 
 
-    private Order order2 = OrderFactory.createOrder("#985422",
-            "Sunday Special",
-            "Large",
-            2);
-
-
-
 
     @Test
-    @org.junit.jupiter.api.Order(1)
-    void save() {
-        Order orderSaved1 = this.service.save(order1);
-        Order orderSaved2 = this.service.save(order2);
+    void a_save() {
+        Order saved = service.save(order);
+        assertEquals(saved.getOrderID(), order.getOrderID());
+        System.out.println("saved" + saved);
+    }
 
-        assertAll(
-                () -> assertNotNull(orderSaved1),
-                () -> assertNotNull(orderSaved2)
-        );
+    @Test
+    void b_read() {
+        Optional<Order> read = service.read(order.getOrderID());
+        assertNotNull(read);
+        System.out.println("read" + read);
 
     }
 
     @Test
-    @org.junit.jupiter.api.Order(2)
-    void read() {
-        assertEquals(this.service.read(order1.getOrderID()), order1.getOrderID());
-
+    void c_update() {
+       Order updated = new Order.Builder().copy(order)
+               .setOrderQuantity(8).build();
+        assertNotNull(service.update(updated));
+        System.out.println("Updated OrderQuantity"+ updated);
     }
 
     @Test
-    @org.junit.jupiter.api.Order(3)
-    void delete() {
-        this.service.delete(order1);
-
+    void c_delete() {
+        boolean done = service.delete("#1478963");
+        assertTrue(done);
+        System.out.println("successfully deleted " + "" + done);
     }
 
     @Test
-    @org.junit.jupiter.api.Order(4)
-    void findByOrderId() {
-        Order order = service.findByOrderId(order1.getOrderID());
-        System.out.println("Find: " + order1.getOrderID() + "");
-        System.out.println(order);
-    }
-
-
-    @Test
-    @org.junit.jupiter.api.Order(5)
-    void findAll() {
-        System.out.println("Find All: ");
+    void g_findAll() {
+        System.out.println("Display all");
         System.out.println(service.findAll());
+
     }
+
 
 
 }
+
+

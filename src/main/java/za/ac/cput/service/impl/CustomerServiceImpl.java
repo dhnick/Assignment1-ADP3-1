@@ -14,16 +14,15 @@ import za.ac.cput.service.CustomerService;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    public final CustomerRepository customerRepository;
+    private static  CustomerService service = null;
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository)
-    {this.customerRepository = customerRepository;}
-
+    private CustomerRepository customerRepository;
 
     @Override
     public Customer save(Customer customer) {
@@ -31,10 +30,18 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Optional<Customer> read(String s) {
-        return this.customerRepository.findById(s);
+    public Optional<Customer> read(String customerID) {
+        return this.customerRepository.findById(customerID);
 
     }
+
+    @Override
+    public Customer update(Customer customer) {
+        if (this.customerRepository.existsById(customer.getCustomerID())){
+            return this.customerRepository.save(customer);}
+        return customer;
+    }
+
 
     @Override
     public void delete(Customer customer) {
@@ -42,85 +49,26 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
-    // Finds Customer by customerID
-    @Override
-    public Customer findByCustomerId(String customerID) {
-        return this.customerRepository.findByCustomerId(customerID);
-    }
 
     @Override
-    public void deleteCustomerByCustomerID(String customerID) {
-        this.customerRepository.deleteCustomerByCustomerID(customerID);
+    public boolean delete(String customerID) {
+        this.customerRepository.deleteById(customerID);
+        if(this.customerRepository.existsById(customerID)){
+            System.out.println("Customer: "+customerID+" not Deleted");
+            return false;
+        }
+        else{
+            System.out.println("Customer Deleted");
+            return true;
+        }
     }
 
-
-    // Finds Customer  by their firstname
-    @Override
-    public Optional<Customer> findByFirstName(String firstname) {
-        return this.customerRepository.findByFirstName(firstname);
-
-    }
 
     // List of all Employees
     @Override
     public List<Customer> findAll() {
-        return this.customerRepository.findAll();
+        return this.customerRepository.findAll().stream().collect(Collectors.toList());
     }
-
-
-
-
-
-    /*
-
-     @Override
-    public boolean delete(String customerID) {
-       if ( this.customerRepository.existsByCustomerId(customerID)){
-            this.customerRepository.deleteByCustomerId(customerID);
-            return true;
-       }
-        return false;
-    }
-
-
-     // Checks if email valid and exist
-    // true = exist
-    // false = doesn't exist or not valid
-    @Override
-    public boolean existsByEmail(String email) {
-        return this.repository.existsByEmail(email);
-    }
-
-
-    // Checks if staffId valid and exist
-    // true = exist
-    // false = doesn't exist or not valid
-    @Override
-    public boolean existsByCustomerId(String customerID) {
-        return this.repository.existsByCustomerId( customerID);
-    }
-
-    @Override
-   public void deleteById(String id) {
-        Optional<Customer> customer = read(id);
-              if(customer.isPresent()){
-                   delete(customer.get());
-                }
-    }
-*/
-
-    /*
-    public Customer getCustomerByEmail(String email){
-        List<Customer> list = this.repository.findByEmail(email);
-        if (list.isEmpty())
-            return  null;
-        else
-            return list.get(0);
-    }
-*/
-
-
-
 
 
 }

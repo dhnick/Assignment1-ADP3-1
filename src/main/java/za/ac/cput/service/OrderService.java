@@ -6,6 +6,7 @@ package za.ac.cput.service;
    Date: August 2022
 */
 
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Order;
 
 import java.util.List;
@@ -13,9 +14,13 @@ import java.util.List;
 public interface OrderService extends  IService <Order, String> {
 
     List<Order> findAll();
-    Order findByOrderId ( String orderID);
 
-    //Order deleteOrderByOrderID(String orderID);
+
+    Order update (Order order);
+    boolean delete ( String orderID);
+
+
+
 
 
 }
