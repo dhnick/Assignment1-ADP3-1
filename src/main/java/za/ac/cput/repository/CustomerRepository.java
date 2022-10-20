@@ -17,13 +17,16 @@ import java.util.Optional;
 public interface CustomerRepository extends JpaRepository<Customer, String> {
 
      List<Customer> findAll();
-     Customer findByCustomerId( String customerID);
+     //Customer findByCustomerId( String customerID);
 
-    void deleteCustomerByCustomerID(String customerID);
+    //void deleteCustomerByCustomerID(String customerID);
 
-    Optional<Customer> findByFirstName(String firstname);
+    Customer update (Customer customer);
+    boolean delete (String customerID);
 
-    //List<Customer> findByEmail( String email);
+    //Optional<Customer> findByFirstName(String firstname);
+
+
 
 
 }

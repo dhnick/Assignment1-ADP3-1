@@ -13,9 +13,13 @@ import java.util.List;
 public interface OrderService extends  IService <Order, String> {
 
     List<Order> findAll();
-    Order findByOrderId ( String orderID);
+    Order update (Order order);
+    boolean delete ( String orderID);
 
-    //Order deleteOrderByOrderID(String orderID);
+
+    //Order findByOrderId ( String orderID);
+
+
 
 
 }

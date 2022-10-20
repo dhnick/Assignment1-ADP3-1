@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Optional;
 
 @Entity
 public class Customer implements Serializable {
@@ -103,7 +104,7 @@ public class Customer implements Serializable {
         }
 
 
-    public Builder copy (Customer customer){
+    public Builder copy (Optional<Customer> customer){
             this.customerID = customer.customerID;
             this.firstName = customer.firstName;
             this.lastName = customer.lastName;
