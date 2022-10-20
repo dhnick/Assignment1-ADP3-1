@@ -49,14 +49,10 @@ class OrderServiceImplTest {
 
     @Test
     void c_update() {
-        Optional<Order> old = service.read("#2521478");
-        Order updated  = new Order.Builder().copy(old)
-                .setOrderDetails("Large")
-                .setOrderType("Medium")
-                .setOrderQuantity(5)
-                .build();
+       Order updated = new Order.Builder().copy(order)
+               .setOrderQuantity(8).build();
         assertNotNull(service.update(updated));
-        System.out.println("updated" + " " + updated);
+        System.out.println("Updated OrderQuantity"+ updated);
     }
 
     @Test

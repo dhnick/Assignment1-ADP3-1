@@ -4,6 +4,7 @@ package za.ac.cput.serviceTest;
    Author: Damone Hartnick
    Student Number : 219093717
    Date: August 2022
+
 */
 
 import org.junit.jupiter.api.*;
@@ -49,15 +50,11 @@ class CustomerServiceImplTest {
     //Possible error
     @Test
     void c_update() {
-        Optional<Customer> old = service.read("#111 0852");
-        Customer updated  = new Customer.Builder().copy(old).setFirstName("Nick")
-                .setLastName("Johnson")
-                .setEmail("NickJ23@gmail.com")
-                .setAddress( " 25 Kloof Street Vleiview")
-                .setContactNumber("075 852 9634")
+        Customer updated = new Customer.Builder().copy(customer)
+                .setFirstName("Frank")
                 .build();
-        assertNotNull(service.update(updated));
-        System.out.println("updated" + " " + updated);
+       assertNotNull(service.update(updated));
+        System.out.println("Updated FirstName " + "" + updated);
 
     }
 

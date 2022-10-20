@@ -17,13 +17,12 @@ public interface CustomerService extends IService <Customer, String> {
 
     // Set<Customer>findAll ();
     List <Customer> findAll();
-    //Customer findByCustomerId ( String customerID);
-    //void deleteCustomerByCustomerID( String customerID);
+
 
     Customer update (Customer customer);
     boolean delete (String customerID);
 
-    //Optional<Customer> findByFirstName ( String firstname);
+
 
 
 }

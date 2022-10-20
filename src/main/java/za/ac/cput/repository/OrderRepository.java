@@ -9,6 +9,7 @@ package za.ac.cput.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Order;
 
 import java.util.List;
@@ -19,9 +20,11 @@ public interface OrderRepository extends JpaRepository<Order, String> {
 
 
     List<Order> findAll();
-    List<Order> findByOrderId (String orderID);
 
-    //Order deleteOrderByOrderID(String orderID);
+    Order update (Order order);
+    boolean delete (String orderID);
+
+
 
 
 

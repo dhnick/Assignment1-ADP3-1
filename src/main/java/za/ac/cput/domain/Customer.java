@@ -104,7 +104,7 @@ public class Customer implements Serializable {
         }
 
 
-    public Builder copy (Optional<Customer> customer){
+    public Builder copy (Customer customer){
             this.customerID = customer.customerID;
             this.firstName = customer.firstName;
             this.lastName = customer.lastName;

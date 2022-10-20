@@ -92,7 +92,7 @@ class OrderControllerTest {
 
     @Test
     void d_update() {
-        Order update = new Order.Builder().copy(Optional.ofNullable(order1)).setOrderQuantity(12).build();
+        Order update = new Order.Builder().copy((order1)).setOrderQuantity(12).build();
         String url = orderURL + "/update";
         httpHeaders.setBasicAuth(username, password);
         HttpEntity<Order> httpEntity = new HttpEntity<>(update, httpHeaders);

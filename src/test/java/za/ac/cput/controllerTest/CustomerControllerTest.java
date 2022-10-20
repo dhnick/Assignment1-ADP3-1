@@ -98,7 +98,7 @@ class CustomerControllerTest {
 
     @Test
     void d_update() {
-        Customer update = new Customer.Builder().copy(Optional.ofNullable(customer1)).setFirstName("Dave").build();
+        Customer update = new Customer.Builder().copy((customer1)).setFirstName("Dave").build();
         String url = customerURL + "/update";
         httpHeaders.setBasicAuth(username, password);
         HttpEntity<Customer> httpEntity = new HttpEntity<>(update, httpHeaders);

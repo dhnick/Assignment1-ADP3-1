@@ -79,7 +79,7 @@ public class Order implements Serializable {
 
         }
 
-        public Builder copy (Optional<Order> order) {
+        public Builder copy (Order order) {
             this.orderID = order.orderID;
             this.orderDetails = order.orderDetails;
             this.orderType = order.orderType;
