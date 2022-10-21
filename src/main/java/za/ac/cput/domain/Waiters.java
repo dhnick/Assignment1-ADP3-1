@@ -6,13 +6,22 @@ package za.ac.cput.domain;
  *  Date: 27 March 2022
  * */
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-public class Waiters {
+@Entity
+public class Waiters implements Serializable {
 
-    private static String StaffID;
+    @NotNull
+    @Id
+    private String StaffID;
     private String firstname;
     private String surname;
     private String ContactNumber;
+
+    protected Waiters(){}
 
     private Waiters(Builder builder) {
 
@@ -24,36 +33,20 @@ public class Waiters {
 
 
 
-    public static String getStaffID() {
+    public String getStaffID() {
         return StaffID;
-    }
-
-    public void setStaffID(String staffID) {
-        StaffID = staffID;
     }
 
     public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
     public String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
     public String getContactNumber() {
         return ContactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        ContactNumber = contactNumber;
     }
 
 

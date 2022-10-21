@@ -6,12 +6,23 @@ package za.ac.cput.domain;
  *  Date: 27 March 2022
  * */
 
-public class Managers {
-    private static String ManagerID;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+
+@Entity
+public class Managers implements Serializable {
+
+    @NotNull
+    @Id
+    private String ManagerID;
     private String firstname;
     private String surname;
     private String Age;
     private String ContactNumber;
+
+    protected Managers(){}
 
     private Managers(Builder builder) {
         this.ManagerID = builder.ManagerID;
@@ -23,44 +34,24 @@ public class Managers {
     }
 
 
-    public static String getManagerID() {
+    public String getManagerID() {
         return ManagerID;
-    }
-
-    public void setManagerID(String managerID) {
-        ManagerID = managerID;
     }
 
     public String getFirstname() {
         return firstname;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
     public String getSurname() {
         return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
     }
 
     public String getAge() {
         return Age;
     }
 
-    public void setAge(String age) {
-        Age = age;
-    }
-
     public String getContactNumber() {
         return ContactNumber;
-    }
-
-    public void setContactNumber(String contactNumber) {
-        ContactNumber = contactNumber;
     }
 
     @Override
