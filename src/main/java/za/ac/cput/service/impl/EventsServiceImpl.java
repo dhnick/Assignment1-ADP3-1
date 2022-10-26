@@ -12,43 +12,37 @@ import java.util.stream.Collectors;
 
 @Service
 public class EventsServiceImpl implements EventsService {
-
     private static EventsService service = null;
 
     @Autowired
     private EventRepository eventRepository;
 
     @Override
-    public Event save(Event events) {
-        return this.eventRepository.save(events);
+    public Event save(Event event) {
+        return this.eventRepository.save(event);
     }
 
     @Override
-    public Optional<Event> read(String eventsID) {
-        return this.eventRepository.findById(eventsID);
-
+    public Optional<Event> read(String EventID) {
+        return this.eventRepository.findById(EventID);
     }
 
     @Override
-    public Event update(Event events) {
-        if (this.eventRepository.existsById(boo.getEventsID())){
-            return this.eventRepository.save(events);}
-        return events;
+    public Event update(Event event) {
+        if (this.eventRepository.existsById(event.getEventID())){
+            return this.eventRepository.save(event);}
+        return event;
+    }
+    @Override
+    public void delete(Event event) {
+        this.eventRepository.delete(event);
     }
 
-
     @Override
-    public void delete(Event events) {
-        this.eventRepository.delete(events);
-
-    }
-
-
-    @Override
-    public boolean delete(String eventsID) {
-        this.eventRepository.deleteById(eventsID);
-        if(this.eventRepository.existsById(eventsID)){
-            System.out.println("Event: "+eventsID+" not Deleted");
+    public boolean delete(String EventID) {
+        this.eventRepository.deleteById(EventID);
+        if(this.eventRepository.existsById(EventID)){
+            System.out.println("Event: "+ EventID + " not Deleted");
             return false;
         }
         else{
@@ -57,12 +51,9 @@ public class EventsServiceImpl implements EventsService {
         }
     }
 
-
-    // List of all Employees
     @Override
     public List<Event> findAll() {
         return this.eventRepository.findAll().stream().collect(Collectors.toList());
     }
-
 
 }

@@ -1,4 +1,4 @@
-package za.ac.cput.RepositoryTest;
+package za.ac.cput.repositoryTest;
 /*  BookingsRepositoryTest.Java
  *  Entity for BookingsRepositoryTest
  *  Author: Yasmeen Nel (219250553)

@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.domain.Bookings;
 import za.ac.cput.factory.BookingsFactory;
-import za.ac.cput.service.impl.BookingsServiceImpl;
+import za.ac.cput.service.impl.BookingsServiceImp;
 
 
 import java.util.List;
@@ -25,23 +25,18 @@ import java.util.Optional;
 public class BookingsController{
 
     @Autowired
-    private final BookingsServiceImpl bookingsService;
+    private BookingsServiceImp bookingsService;
 
-
-    @Autowired
-    public BookingsController(BookingsServiceImpl bookingsService) {
-        this.bookingsService = bookingsService;
-    }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Bookings save(@RequestBody Bookings bookings) {
-        Bookings saveBooking = BookingsFactory.createBooking(
+    public Bookings create(@RequestBody Bookings bookings) {
+        Bookings newBooking = BookingsFactory.createBooking(
                 bookings.getBookingID(),
                 bookings.getBookingTitle(),
                 bookings.getBookingDate(),
                 bookings.getBookingDescription(),
                 bookings.getBookingPackage());
-        return bookingsService.save(saveBooking);
+        return bookingsService.save(bookings);
     }
 
     @RequestMapping("/read/{bookingID}")
@@ -66,4 +61,4 @@ public class BookingsController{
     }
 
 }
-}
+

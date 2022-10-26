@@ -25,22 +25,17 @@ import java.util.Optional;
 public class EventsController {
 
     @Autowired
-    private final EventsServiceImpl eventsService;
+    private EventsServiceImpl eventsService;
 
-
-    @Autowired
-    public EventsController(EventsServiceImpl eventsService) {
-        this.eventsService = eventsService;
-    }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Event save(@RequestBody Event events) {
-        Event saveEvent = EventFactory.createEvent(
+    public Event create(@RequestBody Event events) {
+        Event newEvent = EventFactory.createEvent(
                 events.getEventID(),
                 events.getEventName(),
                 events.getRequestedDate(),
                 events.getEventTheme());
-        return eventsService.save(saveEvent);
+        return eventsService.save(newEvent);
     }
 
     @RequestMapping("/read/{eventID}")
@@ -65,4 +60,4 @@ public class EventsController {
     }
 
 }
-}
+
