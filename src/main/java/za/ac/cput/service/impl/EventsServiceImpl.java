@@ -18,13 +18,13 @@ public class EventsServiceImpl implements EventsService {
     private EventRepository eventRepository;
 
     @Override
-    public Event save(Event event) {
+    public Event create(Event event) {
         return this.eventRepository.save(event);
     }
 
     @Override
-    public Optional<Event> read(String EventID) {
-        return this.eventRepository.findById(EventID);
+    public Event read(String EventID) {
+        return this.eventRepository.findById(EventID).orElse(null);
     }
 
     @Override
@@ -32,10 +32,6 @@ public class EventsServiceImpl implements EventsService {
         if (this.eventRepository.existsById(event.getEventID())){
             return this.eventRepository.save(event);}
         return event;
-    }
-    @Override
-    public void delete(Event event) {
-        this.eventRepository.delete(event);
     }
 
     @Override

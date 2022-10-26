@@ -35,11 +35,11 @@ public class EventsController {
                 events.getEventName(),
                 events.getRequestedDate(),
                 events.getEventTheme());
-        return eventsService.save(newEvent);
+        return eventsService.create(newEvent);
     }
 
-    @RequestMapping("/read/{eventID}")
-    public Optional<Event> read(@PathVariable String eventID){
+  @RequestMapping("/read/{eventID}")
+    public Event read(@PathVariable String eventID){
         return eventsService.read(eventID);
     }
 
@@ -54,7 +54,7 @@ public class EventsController {
         return eventsService.delete(eventID);}
 
 
-    @GetMapping("/findAll")
+   @GetMapping("/findAll")
     public List<Event> findAll() {
         return eventsService.findAll();
     }

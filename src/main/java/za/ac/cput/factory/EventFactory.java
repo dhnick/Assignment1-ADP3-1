@@ -1,5 +1,7 @@
 package za.ac.cput.factory;
+
 import za.ac.cput.domain.Event;
+
 /* EventFactory.Java
  *  Entity for EventFactory
  *  Author: Yasmeen Nel (219250553)

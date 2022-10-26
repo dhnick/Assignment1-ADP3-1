@@ -30,17 +30,17 @@ public class BookingsController{
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public Bookings create(@RequestBody Bookings bookings) {
-        Bookings newBooking = BookingsFactory.createBooking(
+        Bookings newbookings = BookingsFactory.createBooking(
                 bookings.getBookingID(),
                 bookings.getBookingTitle(),
                 bookings.getBookingDate(),
                 bookings.getBookingDescription(),
                 bookings.getBookingPackage());
-        return bookingsService.save(bookings);
+        return bookingsService.create(newbookings);
     }
 
-    @RequestMapping("/read/{bookingID}")
-    public Optional<Bookings> read(@PathVariable String bookingID){
+   @RequestMapping("/read/{bookingID}")
+    public Bookings read(@PathVariable String bookingID){
         return bookingsService.read(bookingID);
     }
 
@@ -55,7 +55,7 @@ public class BookingsController{
         return bookingsService.delete(bookingID);}
 
 
-    @GetMapping("/findAll")
+   @GetMapping("/findAll")
     public List<Bookings> findAll() {
         return bookingsService.findAll();
     }

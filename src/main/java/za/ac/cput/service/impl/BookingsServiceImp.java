@@ -20,13 +20,13 @@ public class BookingsServiceImp implements BookingsService {
     private BookingsRepository bookingsRepository;
 
     @Override
-    public Bookings save(Bookings bookings) {
+    public Bookings create(Bookings bookings) {
         return this.bookingsRepository.save(bookings);
     }
 
     @Override
-    public Optional<Bookings> read(String BookingID) {
-        return this.bookingsRepository.findById(BookingID);
+    public Bookings read(String BookingID) {
+        return this.bookingsRepository.findById(BookingID).orElse(null);
     }
 
     @Override
@@ -34,10 +34,6 @@ public class BookingsServiceImp implements BookingsService {
         if (this.bookingsRepository.existsById(bookings.getBookingID())){
             return this.bookingsRepository.save(bookings);}
         return bookings;
-    }
-    @Override
-    public void delete(Bookings bookings) {
-        this.bookingsRepository.delete(bookings);
     }
 
     @Override

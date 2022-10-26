@@ -23,19 +23,19 @@ public class BookingsServiceTest {
                     "12 January 2023", "Wedding Anniversary", "50 People");
 
     @Test
-    void a_save() {
-        Bookings saved = service.save(bookings);
-        assertEquals(saved.getBookingID(), bookings.getBookingID());
-        System.out.println("Saved: " + saved);
+    void a_create() {
+        Bookings create = service.create(bookings);
+        assertEquals(create.getBookingID(), bookings.getBookingID());
+        System.out.println("Saved: " + create);
     }
 
-    @Test
+   /* @Test
     void b_read() {
         Bookings read = service.read(bookings.getBookingID());
         assertNotNull(read);
         System.out.println("read" + read);
     }
-
+*/
     @Test
     void c_update() {
         Bookings updated = new Bookings.Builder().copy(bookings)

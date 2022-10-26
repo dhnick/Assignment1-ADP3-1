@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Event;
 
-import java.util.Set;
 @Repository
 public interface EventRepository extends JpaRepository<Event, String> {
 //        public Set<Event> getAll();

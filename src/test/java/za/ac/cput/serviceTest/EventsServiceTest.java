@@ -24,18 +24,18 @@ public class EventsServiceTest {
             EventFactory.createEvent("1100","Wedding", "12 Jan 2022", "12:00");
 
     @Test
-    void a_save() {
-        Event saved = service.save(event);
-        assertEquals(saved.getEventID(), event.getEventID());
-        System.out.println("Saved: " + saved);
+    void a_create() {
+        Event create = service.create(event);
+        assertEquals(create.getEventID(), event.getEventID());
+        System.out.println("Saved: " + create);
     }
 
-    @Test
+   /* @Test
     void b_read() {
         Optional<Event> read = service.read(event.getEventID());
         assertNotNull(read);
         System.out.println("read" + read);
-    }
+    }*/
 
     @Test
     void c_update() {
