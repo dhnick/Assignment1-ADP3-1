@@ -10,7 +10,6 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import za.ac.cput.controller.CustomerController;
 import za.ac.cput.domain.Customer;
@@ -55,30 +54,29 @@ class CustomerControllerTest {
 
 
     @Test
-    void a_save1() {
-        String url = customerURL + "/save";
+    void a_create01() {
+        String url = customerURL + "/create";
         httpHeaders.setBasicAuth(username, password);
-        HttpEntity<Customer> httpEntitySave1 = new HttpEntity<>(customer1, httpHeaders);
-        ResponseEntity<Customer> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntitySave1, Customer.class);
+        HttpEntity<Customer> httpEntity = new HttpEntity<>(customer1, httpHeaders);
+        ResponseEntity<Customer> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Customer.class);
         assertNotNull(responseEntity);
         assertNotNull(responseEntity.getBody());
         customer1 = responseEntity.getBody();
-        System.out.println("Save Customer: "+customer1);
+        System.out.println("Customer Saved: "+customer1);
         assertEquals(customer1.getCustomerID(), responseEntity.getBody().getCustomerID());
     }
 
     @Test
-    void b_save2() {
-        String url = customerURL + "/save";
+    void b_create02() {
+        String url = customerURL + "/create";
         httpHeaders.setBasicAuth(username, password);
-        HttpEntity<Customer> httpEntitySave2 = new HttpEntity<>(customer2, httpHeaders);
-        ResponseEntity<Customer> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntitySave2, Customer.class);
+        HttpEntity<Customer> httpEntity = new HttpEntity<>(customer2, httpHeaders);
+        ResponseEntity<Customer> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Customer.class);
         assertNotNull(responseEntity);
         assertNotNull(responseEntity.getBody());
         customer2 = responseEntity.getBody();
-        System.out.println("Save Customer: "+customer2);
+        System.out.println("Customer Saved: "+customer2);
         assertEquals(customer2.getCustomerID(), responseEntity.getBody().getCustomerID());
-
 
 
     }

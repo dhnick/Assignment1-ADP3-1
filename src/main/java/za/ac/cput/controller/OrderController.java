@@ -28,28 +28,23 @@ import java.util.Optional;
 public class OrderController {
 
     @Autowired
-    private final OrderServiceImpl orderService;
+    private OrderServiceImpl orderService;
 
-    @Autowired
-    public OrderController(OrderServiceImpl orderService) {
-        this.orderService = orderService;
-    }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Order save(@RequestBody Order order) {
-        Order saveOrder = OrderFactory.createOrder(
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public Order create(@RequestBody Order order) {
+        Order newOrder = OrderFactory.createOrder(
                 order.getOrderID(),
                 order.getOrderDetails(),
                 order.getOrderType(),
                 order.getOrderQuantity());
-        return orderService.save(saveOrder);
+        return orderService.create(newOrder);
     }
 
     @RequestMapping("/read/{orderID}")
-    public Optional<Order> read(@PathVariable String orderID){
+    public Order read(@PathVariable String orderID){
         return orderService.read(orderID);
     }
-
 
     @PostMapping("/update")
     public Order update(@RequestBody Order order)

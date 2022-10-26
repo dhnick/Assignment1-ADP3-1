@@ -16,13 +16,6 @@ public interface OrderService extends  IService <Order, String> {
     List<Order> findAll();
 
 
-    Order update (Order order);
-    boolean delete ( String orderID);
-
-
-
-
-
 }
 
 

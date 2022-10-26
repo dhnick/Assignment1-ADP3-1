@@ -20,31 +20,26 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/customer/")
-@Slf4j
 public class CustomerController {
 
     @Autowired
-    private final CustomerServiceImpl customerService;
+    private  CustomerServiceImpl customerService;
 
 
-    @Autowired
-    public CustomerController(CustomerServiceImpl customerService) {
-        this.customerService = customerService;
-    }
-
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public Customer save(@RequestBody Customer customer) {
-        Customer saveCustomer = CustomerFactory.createCustomer(
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public Customer create(@RequestBody Customer customer) {
+        Customer newCustomer = CustomerFactory.createCustomer(
                 customer.getCustomerID()
                 ,customer.getFirstName(),
                 customer.getLastName(),
                 customer.getEmail(),
-                customer.getAddress(),customer.getContactNumber());
-        return customerService.save(saveCustomer);
+                customer.getAddress(),
+                customer.getContactNumber());
+        return customerService.create(newCustomer);
     }
 
     @RequestMapping("/read/{customerID}")
-    public Optional<Customer> read(@PathVariable String customerID){
+    public Customer read(@PathVariable String customerID){
         return customerService.read(customerID);
     }
 

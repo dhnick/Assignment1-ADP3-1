@@ -51,28 +51,28 @@ class OrderControllerTest {
     private String password = "password";
 
     @Test
-    void a_save1() {
-        String url = orderURL + "/save";
+    void a_create01() {
+        String url = orderURL + "/create";
         httpHeaders.setBasicAuth(username, password);
-        HttpEntity<Order> httpEntitySave1 = new HttpEntity<>(order1, httpHeaders);
-        ResponseEntity<Order> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntitySave1, Order.class);
+        HttpEntity<Order> httpEntity = new HttpEntity<>(order1, httpHeaders);
+        ResponseEntity<Order> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Order.class);
         assertNotNull(responseEntity);
         assertNotNull(responseEntity.getBody());
         order1 = responseEntity.getBody();
-        System.out.println("Save Order: "+order1);
+        System.out.println("Order Saved: "+order1);
         assertEquals(order1.getOrderID(), responseEntity.getBody().getOrderID());
     }
 
     @Test
-    void b_save2() {
-        String url = orderURL + "/save";
+    void b_create02() {
+        String url = orderURL + "/create";
         httpHeaders.setBasicAuth(username, password);
-        HttpEntity<Order> httpEntitySave2 = new HttpEntity<>(order2, httpHeaders);
-        ResponseEntity<Order> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntitySave2, Order.class);
+        HttpEntity<Order> httpEntity = new HttpEntity<>(order2, httpHeaders);
+        ResponseEntity<Order> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Order.class);
         assertNotNull(responseEntity);
         assertNotNull(responseEntity.getBody());
         order2 = responseEntity.getBody();
-        System.out.println("Save Order: "+order2);
+        System.out.println("Order Saved: "+order2);
         assertEquals(order2.getOrderID(), responseEntity.getBody().getOrderID());
 
     }
