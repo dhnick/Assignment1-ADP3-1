@@ -19,10 +19,4 @@ public interface CustomerService extends IService <Customer, String> {
     List <Customer> findAll();
 
 
-    Customer update (Customer customer);
-    boolean delete (String customerID);
-
-
-
-
 }

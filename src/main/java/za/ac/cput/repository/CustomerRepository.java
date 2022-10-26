@@ -16,15 +16,4 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String> {
 
-     List<Customer> findAll();
-
-
-    Customer update (Customer customer);
-    boolean delete (String customerID);
-
-
-
-
-
-
 }
