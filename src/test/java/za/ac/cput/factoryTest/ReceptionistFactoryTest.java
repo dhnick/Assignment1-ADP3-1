@@ -7,7 +7,6 @@ package za.ac.cput.factoryTest;
  */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.Receptionist;
-import za.ac.cput.factory.ReceptionistFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 

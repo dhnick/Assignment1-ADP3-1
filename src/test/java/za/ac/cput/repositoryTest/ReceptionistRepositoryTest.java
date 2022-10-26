@@ -6,12 +6,7 @@ package za.ac.cput.repositoryTest;
     Date: 06/04/2022
  */
 import org.junit.jupiter.api.*;
-import za.ac.cput.domain.Delivery;
 import za.ac.cput.domain.Receptionist;
-import za.ac.cput.factory.DeliveryFactory;
-import za.ac.cput.factory.ReceptionistFactory;
-import za.ac.cput.repository.DeliveryRepository;
-import za.ac.cput.repository.ReceptionistRepository;
 
 import java.util.List;
 import java.util.Optional;

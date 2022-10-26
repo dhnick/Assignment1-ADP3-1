@@ -7,8 +7,6 @@ package za.ac.cput.repositoryTest;
  */
 import org.junit.jupiter.api.*;
 import za.ac.cput.domain.Delivery;
-import za.ac.cput.factory.DeliveryFactory;
-import za.ac.cput.repository.DeliveryRepository;
 
 import java.util.List;
 import java.util.Optional;
