@@ -9,6 +9,7 @@ package za.ac.cput.serviceTest;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.factory.CustomerFactory;
 import za.ac.cput.service.impl.CustomerServiceImpl;
@@ -20,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@SpringBootTest
 class CustomerServiceImplTest {
 
     @Autowired
@@ -33,24 +35,26 @@ class CustomerServiceImplTest {
             "34 New Way Street Crystal City",
             "082 963 7452");
 
+
     @Test
-    void a_save() {
-        Customer saved = service.save(customer);
-        assertEquals(saved.getCustomerID(), customer.getCustomerID());
-        System.out.println("saved" + saved);
+    void a_create() {
+        Customer created = service.create(customer);
+        assertEquals(created.getCustomerID(), customer.getCustomerID());
+        System.out.println("created" + created);
     }
 
     @Test
     void b_read() {
-        Optional<Customer> read = service.read(customer.getCustomerID());
+        Customer read = service.read(customer.getCustomerID());
         assertNotNull(read);
-        System.out.println("read" + read);
+        System.out.println("read:" + read);
     }
 
     //Possible error
     @Test
     void c_update() {
-        Customer updated = new Customer.Builder().copy(customer)
+        Customer old = service.read("#17485963");
+        Customer updated = new Customer.Builder().copy(old)
                 .setFirstName("Frank")
                 .build();
        assertNotNull(service.update(updated));

@@ -19,36 +19,29 @@ import java.util.stream.Collectors;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private static  CustomerService service = null;
+    private static  CustomerService service ;
 
     @Autowired
     private CustomerRepository customerRepository;
 
+
     @Override
-    public Customer save(Customer customer) {
+    public Customer create(Customer customer) {
         return this.customerRepository.save(customer);
     }
 
     @Override
-    public Optional<Customer> read(String customerID) {
-        return this.customerRepository.findById(customerID);
-
+    public Customer read(String customerID) {
+        return this.customerRepository.findById(customerID)
+                .orElse(null);
     }
 
     @Override
     public Customer update(Customer customer) {
-        if (this.customerRepository.existsById(customer.getCustomerID())){
-            return this.customerRepository.save(customer);}
+        if (this.customerRepository.existsById(customer.getCustomerID()))
+            return this.customerRepository.save(customer);
         return customer;
     }
-
-
-    @Override
-    public void delete(Customer customer) {
-        this.customerRepository.delete(customer);
-
-    }
-
 
     @Override
     public boolean delete(String customerID) {

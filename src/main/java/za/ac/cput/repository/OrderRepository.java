@@ -19,13 +19,4 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order, String> {
 
 
-    List<Order> findAll();
-
-    Order update (Order order);
-    boolean delete (String orderID);
-
-
-
-
-
 }

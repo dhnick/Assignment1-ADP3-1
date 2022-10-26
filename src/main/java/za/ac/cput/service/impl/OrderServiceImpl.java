@@ -19,35 +19,29 @@ import java.util.stream.Collectors;
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private static OrderService service = null;
+    private static OrderService service ;
 
     @Autowired
     private  OrderRepository orderRepository;
 
 
     @Override
-    public Order save(Order order) {
+    public Order create(Order order) {
         return this.orderRepository.save(order);
     }
 
     @Override
-    public Optional<Order> read(String orderID) {
-        return this.orderRepository.findById(orderID);
-
+    public Order read(String orderID) {
+        return this.orderRepository.findById(orderID)
+                .orElse(null);
     }
 
     @Override
     public Order update(Order order) {
-        if (this.orderRepository.existsById(order.getOrderID())){
-            return this.orderRepository.save(order);}
+        if (this.orderRepository.existsById(order.getOrderID()))
+            return this.orderRepository.save(order);
         return order;
     }
-
-    @Override
-    public void delete(Order order) {
-        this.orderRepository.delete(order);
-    }
-
 
     @Override
     public boolean delete(String orderID) {

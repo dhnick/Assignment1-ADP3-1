@@ -8,6 +8,7 @@ package za.ac.cput.serviceTest;
 
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.Customer;
 import za.ac.cput.domain.Order;
 import za.ac.cput.factory.OrderFactory;
@@ -18,6 +19,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@SpringBootTest
 class OrderServiceImplTest {
 
     @Autowired
@@ -33,19 +35,20 @@ class OrderServiceImplTest {
 
 
     @Test
-    void a_save() {
-        Order saved = service.save(order);
-        assertEquals(saved.getOrderID(), order.getOrderID());
-        System.out.println("saved" + saved);
+    void a_create() {
+        Order created = service.create(order);
+        assertEquals(created.getOrderID(), order.getOrderID());
+        System.out.println("created" + created);
     }
 
     @Test
     void b_read() {
-        Optional<Order> read = service.read(order.getOrderID());
+        Order read = service.read(order.getOrderID());
         assertNotNull(read);
-        System.out.println("read" + read);
-
+        System.out.println("read:" + read);
     }
+
+
 
     @Test
     void c_update() {
